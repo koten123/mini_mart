@@ -1,0 +1,18 @@
+.filters{
+    margin:12px 0;
+}
+.filters .btn{
+    background-color:#fff;
+    color:#0a2d4a;
+    border:1px solid #0a2d4a;
+    margin:0 8px 8px 0;
+}
+.filters .btn.active{
+    background-color:#0a2d4a;
+    color:#fff;
+}
+#khongthay{
+    display:none;
+    padding:24px;
+    text-align:center;
+}

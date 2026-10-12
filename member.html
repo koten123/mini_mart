@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hội viên &amp; Ưu đãi – MiniMart</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/member.css">
+</head>
+<body>
+<header>
+    <h1><a href="index.html">MiniMart</a></h1>
+    <h3>Mua nhanh, đủ dùng mỗi ngày</h3>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Sản phẩm</a></li>
+            <li><a href="product-detail.html">Chi tiết</a></li>
+            <li><a href="cart.html">Giỏ hàng</a></li>
+            <li><a href="member.html">Hội viên</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="khuKhach">
+    <h1>Hội viên MiniMart</h1>
+    <div class="two">
+        <div class="box">
+            <h2>Quyền lợi hội viên</h2>
+            <div class="ud"><b>Tích điểm</b><p>Mỗi 10.000đ mua hàng được 1 điểm.</p></div>
+            <div class="ud"><b>Ưu đãi sinh nhật</b><p>Giảm 15% trong tuần sinh nhật.</p></div>
+            <div class="ud"><b>Ưu đãi chung</b><p>Giảm 10% đơn đầu tiên cho mọi khách.</p></div>
+        </div>
+        <div class="box">
+            <h2>Đăng ký / Đăng nhập</h2>
+            <label for="hoten">Họ tên (chỉ cần khi đăng ký)</label><input id="hoten">
+            <label for="email">Email</label><input id="email" type="text">
+            <label for="matkhau">Mật khẩu</label><input id="matkhau" type="password">
+            <span class="err" id="thongbao" role="alert"></span>
+            <span class="ok" id="thanhcong" role="status"></span>
+            <div class="row-btn">
+                <button class="btn btn-green" onclick="dangKy()">Đăng ký</button>
+                <button class="btn" onclick="dangNhap()">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="khuHoiVien">
+    <h1>Xin chào, Nguyễn Văn A</h1>
+    <div class="badges">
+        <div class="badge"><small>Điểm</small>1.250</div>
+        <div class="badge"><small>Hạng</small>Vàng</div>
+    </div>
+    <h2>Ưu đãi riêng cho bạn</h2>
+    <div class="two">
+        <div class="ud"><b>Giảm 20% sữa tươi</b><p>Áp dụng đến hết tháng.</p></div>
+        <div class="ud"><b>Tặng 1 chai nước cam</b><p>Cho đơn từ 200.000đ.</p></div>
+    </div>
+    <h2>Lịch sử mua hàng</h2>
+    <table>
+        <thead><tr><th>Ngày</th><th>Mã đơn</th><th>Tổng tiền</th></tr></thead>
+        <tbody>
+            <tr><td>01/10/2026</td><td>MM001</td><td>125.000đ</td></tr>
+            <tr><td>15/09/2026</td><td>MM000</td><td>86.000đ</td></tr>
+        </tbody>
+    </table>
+    <p class="links">
+        <a class="btn btn-green" href="products.html">Mua sắm</a>
+        <a class="btn btn-line" href="cart.html">Giỏ hàng</a>
+        <button class="btn btn-line" onclick="dangXuat()">Đăng xuất</button>
+    </p>
+</section>
+</main>
+<footer>
+    &copy; Copyright 2026 - MiniMart · Hotline: 1900 0000
+</footer>
+<script src="js/home.js"></script>
+<script src="js/member.js"></script>
+</body>
+</html>

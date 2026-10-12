@@ -1,0 +1,73 @@
+.two > *{
+    display:inline-block;
+    vertical-align:top;
+    width:calc(50% - 26px);
+    margin:0 10px 16px 10px;
+}
+.box{
+    background-color:#fff;
+    border:1px solid #0a2d4a;
+    padding:18px;
+}
+.box h2{
+    margin-top:0px;
+}
+.box label{
+    display:block;
+    margin-top:8px;
+    font-weight:bold;
+}
+.row-btn{
+    margin-top:12px;
+}
+.row-btn .btn{
+    margin-right:8px;
+}
+#khuHoiVien{
+    display:none;
+}
+.badges{
+    margin:12px 0;
+    text-align:center;
+}
+.badge{
+    display:inline-block;
+    background-color:#0a2d4a;
+    color:#fff;
+    padding:10px 18px;
+    margin:0 6px;
+    font-weight:bold;
+    text-align:center;
+}
+.badge small{
+    display:block;
+    font-weight:normal;
+}
+.ud{
+    background-color:#fff;
+    border:1px dashed #0a2d4a;
+    padding:14px;
+    margin-bottom:12px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    background-color:#fff;
+    border:1px solid #0a2d4a;
+}
+th,td{
+    padding:8px;
+    border-bottom:1px solid #0a2d4a;
+    text-align:left;
+}
+.links{
+    margin-top:16px;
+    text-align:center;
+}
+@media(max-width:768px){
+    .two > *{
+        display:block;
+        width:auto;
+        margin:0 0 16px 0;
+    }
+}

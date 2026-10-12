@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chi tiết sản phẩm – MiniMart</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+<header>
+    <h1><a href="index.html">MiniMart</a></h1>
+    <h3>Mua nhanh, đủ dùng mỗi ngày</h3>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Sản phẩm</a></li>
+            <li><a href="product-detail.html">Chi tiết</a></li>
+            <li><a href="cart.html">Giỏ hàng</a></li>
+            <li><a href="member.html">Hội viên</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<p class="back"><a href="products.html">← Quay lại danh sách sản phẩm</a></p>
+<section class="detail">
+    <div class="big" role="img" aria-label="Sữa tươi">🥛</div>
+    <div>
+        <h1>Sữa tươi tiệt trùng 1L</h1>
+        <p class="price-lg">25.000đ</p>
+        <p class="ok">Còn hàng</p>
+        <p>Sữa tươi nguyên chất, ít đường, hộp 1 lít. Dùng ngon nhất khi uống lạnh.</p>
+        <div class="qty">
+            <span>Số lượng:</span>
+            <button onclick="doiSL(-1)" aria-label="Giảm">−</button><span id="sl">1</span><button onclick="doiSL(1)" aria-label="Tăng">+</button>
+        </div>
+        <button class="btn btn-green" onclick="themGio()">Thêm vào giỏ</button>
+        <p id="thongbao" class="ok" role="status"></p>
+    </div>
+</section>
+<section class="more">
+    <h2>Thông tin thêm</h2>
+    <p>Xuất xứ: Việt Nam. Bảo quản: nơi khô mát, sau khi mở nên dùng trong 3 ngày. Hạn dùng: 6 tháng kể từ ngày sản xuất.</p>
+</section>
+</main>
+<footer>
+    &copy; Copyright 2026 - MiniMart · Hotline: 1900 0000
+</footer>
+<script src="js/home.js"></script>
+<script src="js/detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sản phẩm – MiniMart</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+<header>
+    <h1><a href="index.html">MiniMart</a></h1>
+    <h3>Mua nhanh, đủ dùng mỗi ngày</h3>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="products.html">Sản phẩm</a></li>
+            <li><a href="product-detail.html">Chi tiết</a></li>
+            <li><a href="cart.html">Giỏ hàng</a></li>
+            <li><a href="member.html">Hội viên</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<h1>Sản phẩm</h1>
+<input id="timkiem" type="search" placeholder="Tìm theo tên sản phẩm..." aria-label="Tìm theo tên" oninput="loc()">
+<div class="filters">
+    <button class="btn active" onclick="chonDanhMuc('tatca',this)">Tất cả</button>
+    <button class="btn" onclick="chonDanhMuc('sua',this)">Sữa</button>
+    <button class="btn" onclick="chonDanhMuc('banh',this)">Bánh</button>
+    <button class="btn" onclick="chonDanhMuc('nuoc',this)">Nước uống</button>
+    <button class="btn" onclick="chonDanhMuc('rau',this)">Rau củ quả</button>
+</div>
+<p id="khongthay">Không tìm thấy sản phẩm. Hãy thử từ khóa khác.</p>
+<section>
+    <div class="card the" data-category="sua"><div class="pic">🥛</div><b>Sữa tươi 1L</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="sua"><div class="pic">🥣</div><b>Sữa chua uống</b><span class="price">8.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="sua"><div class="pic">🧀</div><b>Phô mai lát</b><span class="price">38.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="banh"><div class="pic">🍪</div><b>Bánh quy bơ</b><span class="price">32.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="banh"><div class="pic">🍞</div><b>Bánh mì sandwich</b><span class="price">15.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="nuoc"><div class="pic">💧</div><b>Nước suối 500ml</b><span class="price">6.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="nuoc"><div class="pic">🧃</div><b>Nước cam ép</b><span class="price">18.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="nuoc"><div class="pic">🥤</div><b>Nước ngọt lon</b><span class="price">12.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><div class="pic">🥬</div><b>Rau cải xanh</b><span class="price">12.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><div class="pic">🍅</div><b>Cà chua 500g</b><span class="price">20.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><div class="pic">🍎</div><b>Táo đỏ 1kg</b><span class="price">45.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><div class="pic">🍌</div><b>Chuối 1kg</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+</section>
+</main>
+<footer>
+    &copy; Copyright 2026 - MiniMart · Hotline: 1900 0000
+</footer>
+<script src="js/home.js"></script>
+<script src="js/products.js"></script>
+</body>
+</html>
