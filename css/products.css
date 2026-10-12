@@ -1,18 +1,38 @@
-.filters{
-    margin:12px 0;
+#timkiem {
+    display: block;
+    max-width: 640px;
+    margin: 0 auto 16px;
 }
-.filters .btn{
-    background-color:#fff;
-    color:#0a2d4a;
-    border:1px solid #0a2d4a;
-    margin:0 8px 8px 0;
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0px 22px;
 }
-.filters .btn.active{
-    background-color:#0a2d4a;
-    color:#fff;
+
+.filters .btn {
+    min-height: 38px;
+    padding: 8px 15px;
+    border: 1px solid #d4e6ea;
+    background-color: white;
+    color: #07576b;
 }
-#khongthay{
-    display:none;
-    padding:24px;
-    text-align:center;
+
+.filters .btn.active {
+    border-color: #08788a;
+    background-color: #07576b;
+    color: white;
+}
+
+#khongthay {
+    display: none;
+    padding: 24px;
+    border: 1px dashed #dcebef;
+    border-radius: 14px;
+    background-color: white;
+    color: #5d7781;
+    text-align: center;
 }
