@@ -1,70 +1,101 @@
-.layout > div{
-    display:inline-block;
-    vertical-align:top;
-    width:calc(65% - 26px);
-    margin:0 10px;
+.layout {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    align-items: start;
+    gap: 20px;
 }
-.layout aside{
-    display:inline-block;
-    vertical-align:top;
-    width:calc(32% - 26px);
-    margin:0 10px;
+
+.layout > div,
+.layout aside {
+    min-width: 0px;
 }
-table{
-    width:100%;
-    border-collapse:collapse;
-    background-color:#fff;
-    border:1px solid #0a2d4a;
+
+.layout table {
+    box-shadow: 0px 5px 18px rgba(7, 87, 107, 0.08);
 }
-th,td{
-    padding:10px;
-    border-bottom:1px solid #0a2d4a;
-    text-align:left;
+
+.layout th,
+.layout td {
+    padding: 11px 10px;
 }
-td button{
-    border:1px solid #0a2d4a;
-    background-color:#fff;
-    color:#0a2d4a;
-    padding:2px 9px;
-    cursor:pointer;
+
+.layout td button {
+    min-width: 27px;
+    min-height: 28px;
+    border: 1px solid #cbdfe4;
+    border-radius: 7px;
+    background-color: white;
+    color: #07576b;
+    cursor: pointer;
 }
-.box{
-    background-color:#fff;
-    border:1px solid #0a2d4a;
-    padding:16px;
-    margin-bottom:16px;
+
+.layout td button:hover {
+    background-color: #eaf7fa;
 }
-.box h2{
-    margin-top:0px;
+
+.box {
+    margin-bottom: 15px;
+    padding: 17px;
+    border: 1px solid #dcebef;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0px 5px 18px rgba(7, 87, 107, 0.08);
 }
-.box p{
-    overflow:hidden;
+
+.box h2 {
+    margin: 0px 0px 12px;
+    color: #07576b;
+    font-size: 19px;
 }
-.box p span:last-child{
-    float:right;
+
+.box p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0px;
+    padding: 9px 0px;
+    border-bottom: 1px solid #edf4f6;
 }
-.total{
-    font-weight:bold;
-    font-size:20px;
+
+.box p:last-child {
+    border-bottom: none;
 }
-#trong{
-    display:none;
-    padding:24px;
-    text-align:center;
+
+.box .total {
+    color: #07576b;
+    font-size: 20px;
+    font-weight: bold;
 }
-label{
-    display:block;
-    margin-top:8px;
-    font-weight:bold;
+
+.box label {
+    display: block;
+    margin: 10px 0px 5px;
+    font-weight: bold;
 }
-@media(max-width:768px){
-    .layout > div,.layout aside{
-        display:block;
-        width:auto;
-        margin:0 0 16px 0;
+/
+#trong {
+    display: none;
+    padding: 24px;
+    border: 1px dashed #dcebef;
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+}
+
+#trong a {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 820px) {
+    .layout {
+        grid-template-columns: 1fr;
     }
-    th,td{
-        padding:8px 4px;
-        font-size:14px;
+}
+
+@media screen and (max-width: 500px) {
+    .layout th,
+    .layout td {
+        padding: 8px 5px;
+        font-size: 12px;
     }
 }
