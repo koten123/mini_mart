@@ -51,25 +51,15 @@
     <p class="back">
         <a href="products.html">← Quay lại danh sách sản phẩm</a>
     </p>
-
-    <section class="detail">
-        <div class="big">
-            <img src="https://images.pexels.com/photos/14127931/pexels-photo-14127931.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                 alt="Sữa tươi trong chai thủy tinh"
-                 loading="lazy">
-        </div>
-
-        <div>
-            <h1>Sữa tươi tiệt trùng 1L</h1>
-            <p class="price-lg">25.000đ</p>
-            <p class="ok">Còn hàng</p>
-
-            <p>
-                Sữa tươi nguyên chất, ít đường, hộp 1 lít.
-                Dùng ngon nhất khi uống lạnh.
-            </p>
-
-            <div class="qty">
+<section class="detail">
+    <div class="big" id="anhSP" role="img" aria-label="Sữa tươi 1L">🥛</div>   <!-- ← đổi -->
+    <div>
+        <h1 id="tenSP">Sữa tươi 1L</h1>                                          <!-- ← đổi -->
+        <p class="price-lg" id="giaSP">25.000đ</p>                               <!-- ← đổi -->
+        <p class="ok">Còn hàng</p>
+        <p id="moTaSP">Sữa tươi nguyên chất, ít đường, hộp 1 lít. Dùng ngon nhất khi uống lạnh.</p>   <!-- ← đổi -->
+        <div class="qty">
+    
                 <span>Số lượng:</span>
                 <button onclick="doiSL(-1)" aria-label="Giảm">−</button>
                 <span id="sl">1</span>

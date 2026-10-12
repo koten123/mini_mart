@@ -11,3 +11,10 @@ function doiMenu() {
         );
     }
 }
+var cacThe = document.querySelectorAll(".card");
+for (var i = 0; i < cacThe.length; i++) {
+    var nutXem = cacThe[i].querySelector("a.btn");
+    if (nutXem) {
+        nutXem.href = "product-detail.html?ten=" + encodeURIComponent(cacThe[i].querySelector("b").innerText);
+    }
+}
