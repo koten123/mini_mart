@@ -25,21 +25,38 @@
 </header>
 <main>
 <p class="back"><a href="products.html">← Quay lại danh sách sản phẩm</a></p>
+<
 <section class="detail">
-    <img class="big" id="anhSP" src="images/products/sua-tuoi-1l.png" alt="Sữa tươi 1L">
+    <div class="big">
+        <img id="anhSP" src="images/logo-mark.png" alt="Ảnh sản phẩm">
+    </div>
+
     <div>
-        <h1 id="tenSP">Sữa tươi 1L</h1>
-        <p class="price-lg" id="giaSP">25.000đ</p>
+        <h1 id="tenSP">Đang tải sản phẩm...</h1>
+        <p class="price-lg" id="giaSP"></p>
         <p class="ok">Còn hàng</p>
-        <p>Sản phẩm được MiniMart kiểm tra chất lượng trước khi giao đến tay bạn.</p>
+        <p id="moTaSP"></p>
+
         <div class="qty">
             <span>Số lượng:</span>
-            <button onclick="doiSL(-1)" aria-label="Giảm">−</button><span id="sl">1</span><button onclick="doiSL(1)" aria-label="Tăng">+</button>
+            <button onclick="doiSL(-1)" aria-label="Giảm">−</button>
+            <span id="sl">1</span>
+            <button onclick="doiSL(1)" aria-label="Tăng">+</button>
         </div>
-        <button class="btn btn-yellow" onclick="themGio()">Thêm vào giỏ</button>
+
+        <button class="btn btn-green" onclick="themGio()">
+            Thêm vào giỏ
+        </button>
+
         <p id="thongbao" class="ok" role="status"></p>
     </div>
 </section>
+
+<section class="more">
+    <h2>Thông tin thêm</h2>
+    <p id="thongTinSP"></p>
+</section>
+
 <section class="more">
     <h2>Thông tin thêm</h2>
     <p>Giao hàng trong 60 phút với đơn nội thành. Đổi trả trong 24 giờ nếu sản phẩm lỗi hoặc không đúng mô tả. Bảo quản nơi khô mát, tránh ánh nắng trực tiếp.</p>
