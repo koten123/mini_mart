@@ -1,4 +1,5 @@
-
+// Bản demo phía trình duyệt: chỉ lưu tên hội viên và mã băm mật khẩu, không lưu mật khẩu thô.
+// Website chưa có backend; không dùng cơ chế này cho tài khoản thật.
 var KHOA_TAI_KHOAN = "minimartMemberDemo";
 
 function layTen() {

@@ -1,81 +1,55 @@
-const KHOA_GIO_HANG = "minimart_cart_v1";
-const KHOA_GIO_HANG_CU = "minimart_cart";
-const PHI_SHIP = 15000;
-function tien(n) { return Number(n || 0).toLocaleString("vi-VN") + "đ"; }
-function docGioHang() {
-    try {
-        let raw = localStorage.getItem(KHOA_GIO_HANG);
-        // Tự lấy giỏ hàng của phiên bản trước nếu người dùng đã thêm sản phẩm rồi.
-        if (!raw) {
-            raw = localStorage.getItem(KHOA_GIO_HANG_CU);
-            if (raw) localStorage.setItem(KHOA_GIO_HANG, raw);
-        }
-        const data = JSON.parse(raw || "[]");
-        if (!Array.isArray(data)) return [];
-        return data.filter(item => item && item.id && Number(item.price) >= 0)
-            .map(item => ({ ...item, quantity: Math.max(1, Math.min(10, Number(item.quantity || item.soLuong || 1))) }));
-    } catch (e) { return []; }
+/* Giỏ hàng dùng chung localStorage với trang chi tiết sản phẩm. */
+var PHI_SHIP = 15000;
+function tien(n) { return Number(n).toLocaleString("vi-VN") + "đ"; }
+function layGio() {
+  try { var gio = JSON.parse(localStorage.getItem("minimart_cart") || "[]"); return Array.isArray(gio) ? gio : []; }
+  catch (e) { return []; }
 }
-function luuGioHang(gio) {
-    localStorage.setItem(KHOA_GIO_HANG, JSON.stringify(gio));
-    localStorage.removeItem(KHOA_GIO_HANG_CU);
-}
-function veGioHang() {
-    const body = document.getElementById("gioBody");
-    if (!body) return;
-    const gio = docGioHang();
-    body.innerHTML = "";
-    gio.forEach(item => {
-        const tr = document.createElement("tr");
-        tr.dataset.id = item.id;
-        const tdName = document.createElement("td"); tdName.textContent = (item.emoji || "🛒") + " " + item.name;
-        const tdPrice = document.createElement("td"); tdPrice.textContent = tien(item.price);
-        const tdQty = document.createElement("td");
-        const minus = document.createElement("button"); minus.type = "button"; minus.textContent = "−"; minus.setAttribute("aria-label", "Giảm số lượng"); minus.onclick = () => doiSL(item.id, -1);
-        const qty = document.createElement("span"); qty.className = "sl"; qty.textContent = item.quantity;
-        const plus = document.createElement("button"); plus.type = "button"; plus.textContent = "+"; plus.setAttribute("aria-label", "Tăng số lượng"); plus.onclick = () => doiSL(item.id, 1);
-        tdQty.append(minus, document.createTextNode(" "), qty, document.createTextNode(" "), plus);
-        const tdTotal = document.createElement("td"); tdTotal.className = "tt"; tdTotal.textContent = tien(item.price * item.quantity);
-        const tdRemove = document.createElement("td"); const remove = document.createElement("button"); remove.type = "button"; remove.textContent = "Xóa"; remove.onclick = () => xoa(item.id); tdRemove.appendChild(remove);
-        tr.append(tdName, tdPrice, tdQty, tdTotal, tdRemove); body.appendChild(tr);
-    });
-    tinh();
+function luuGio(gio) { localStorage.setItem("minimart_cart", JSON.stringify(gio)); }
+function veGio() {
+  var gio = layGio(), tbody = document.getElementById("cartBody");
+  tbody.innerHTML = "";
+  gio.forEach(function(sp) {
+    var tr = document.createElement("tr"); tr.dataset.id = sp.id;
+    tr.innerHTML = '<td></td><td></td><td><button type="button" aria-label="Giảm số lượng">−</button> <span class="sl"></span> <button type="button" aria-label="Tăng số lượng">+</button></td><td class="tt"></td><td><button type="button" class="xoa-sp">Xóa</button></td>';
+    tr.children[0].textContent = sp.name; tr.children[1].textContent = tien(sp.price);
+    tr.querySelector(".sl").textContent = Math.max(1, Number(sp.quantity || 1));
+    var buttons = tr.querySelectorAll("button");
+    buttons[0].addEventListener("click", function(){ doiSL(sp.id,-1); });
+    buttons[1].addEventListener("click", function(){ doiSL(sp.id,1); });
+    buttons[2].addEventListener("click", function(){ xoa(sp.id); });
+    tbody.appendChild(tr);
+  });
+  tinh();
 }
 function tinh() {
-    const gio = docGioHang();
-    const tam = gio.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
-    const ship = gio.length ? PHI_SHIP : 0;
-    const tamEl = document.getElementById("tam");
-    const shipEl = document.getElementById("ship");
-    const tongEl = document.getElementById("tong");
-    const trongEl = document.getElementById("trong");
-    const gioEl = document.getElementById("gio");
-    const nutDat = document.getElementById("nutDat");
-    if (tamEl) tamEl.textContent = tien(tam);
-    if (shipEl) shipEl.textContent = tien(ship);
-    if (tongEl) tongEl.textContent = tien(tam + ship);
-    if (trongEl) trongEl.style.display = gio.length ? "none" : "block";
-    if (gioEl) gioEl.style.display = gio.length ? "table" : "none";
-    if (nutDat) nutDat.disabled = gio.length === 0;
+  var gio=layGio(), tam=0;
+  gio.forEach(function(sp){ tam += Number(sp.price)*Number(sp.quantity); });
+  var ship=gio.length ? PHI_SHIP : 0;
+  document.getElementById("tam").textContent=tien(tam);
+  document.getElementById("ship").textContent=tien(ship);
+  document.getElementById("tong").textContent=tien(tam+ship);
+  document.getElementById("trong").style.display=gio.length ? "none":"block";
+  document.getElementById("gio").style.display=gio.length ? "table":"none";
+  document.getElementById("nutDat").disabled=!gio.length;
+  document.querySelectorAll("#cartBody tr").forEach(function(tr){
+    var sp=gio.find(function(x){return x.id===tr.dataset.id;});
+    if(sp) tr.querySelector(".tt").textContent=tien(Number(sp.price)*Number(sp.quantity));
+  });
 }
-function doiSL(id, delta) {
-    const gio = docGioHang(); const item = gio.find(x => x.id === id); if (!item) return;
-    item.quantity = Math.min(10, Math.max(1, Number(item.quantity) + delta));
-    luuGioHang(gio); veGioHang();
+function doiSL(id,n) {
+  var gio=layGio(), sp=gio.find(function(x){return x.id===id;});
+  if(!sp) return;
+  sp.quantity=Math.max(1,Math.min(99,Number(sp.quantity||1)+n));
+  luuGio(gio); veGio();
 }
-function xoa(id) { luuGioHang(docGioHang().filter(item => item.id !== id)); veGioHang(); }
+function xoa(id) { luuGio(layGio().filter(function(sp){return sp.id!==id;})); veGio(); }
 function datHang() {
-    const ten = document.getElementById("ten").value.trim();
-    const sdt = document.getElementById("sdt").value.trim();
-    const dc = document.getElementById("diachi").value.trim();
-    const loi = {ten: ten ? "" : "Vui lòng nhập họ tên", sdt: /^\d{10}$/.test(sdt) ? "" : "Số điện thoại phải gồm đúng 10 chữ số", diachi: dc ? "" : "Vui lòng nhập địa chỉ"};
-    Object.keys(loi).forEach(k => {
-        const el = document.getElementById("l_" + k);
-        if (el) el.textContent = loi[k];
-    });
-    const hopLe = Object.values(loi).every(x => !x) && docGioHang().length > 0;
-    const ketQua = document.getElementById("thanhcong");
-    if (ketQua) ketQua.textContent = hopLe ? "Đặt hàng thành công! Chúng tôi sẽ gọi xác nhận sớm." : "";
-    if (hopLe) { localStorage.removeItem(KHOA_GIO_HANG); veGioHang(); }
+  var ten=document.getElementById("ten").value.trim(), sdt=document.getElementById("sdt").value.trim(), dc=document.getElementById("diachi").value.trim();
+  var loi={ten:ten?"":"Vui lòng nhập họ tên",sdt:/^\d{10}$/.test(sdt)?"":"Số điện thoại phải gồm đúng 10 chữ số",diachi:dc?"":"Vui lòng nhập địa chỉ"};
+  Object.keys(loi).forEach(function(k){document.getElementById("l_"+k).textContent=loi[k];});
+  var hopLe=Object.values(loi).every(function(x){return !x;});
+  document.getElementById("thanhcong").textContent="";
+  if(hopLe){document.getElementById("thanhcong").textContent="Đặt hàng thành công! Chúng tôi sẽ gọi xác nhận sớm.";localStorage.removeItem("minimart_cart");veGio();}
 }
-document.addEventListener("DOMContentLoaded", veGioHang);
+veGio();
