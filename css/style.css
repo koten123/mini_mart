@@ -200,3 +200,40 @@ footer{
         width:calc(50% - 26px);
     }
 }
+
+/* Ảnh sản phẩm: hiển thị toàn bộ, không phóng quá lớn */
+.product-grid .pic {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.product-grid .pic img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Ảnh không tràn khỏi thẻ sản phẩm */
+.product-grid .card {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Điện thoại */
+@media (max-width: 600px) {
+    .product-grid .pic {
+        height: 140px;
+    }
+}
+
