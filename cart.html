@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ – MiniMart</title>
+    <title>Giỏ hàng – MiniMart</title>
     <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
 <header>
@@ -24,41 +24,36 @@
     </nav>
 </header>
 <main>
-<form class="search" action="products.html">
-    <input type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm">
-    <button class="btn btn-yellow" type="submit">Tìm</button>
-</form>
-
-<section class="banner">
-    <h1>Đi chợ nhanh, giao tận nhà</h1>
-    <p>Sữa, bánh, nước uống và rau củ tươi – giao trong 60 phút.</p>
-    <a class="btn btn-yellow" href="products.html">Mua ngay</a>
-</section>
-<h2>Danh mục</h2>
-<section>
-    <a class="cat" href="products.html">Sữa</a>
-    <a class="cat" href="products.html">Bánh</a>
-    <a class="cat" href="products.html">Nước uống</a>
-    <a class="cat" href="products.html">Rau củ quả</a>
-</section>
-
-<h2>Sản phẩm nổi bật</h2>
-<section>
-    <div class="card"><img src="images/products/sua-tuoi-1l.png" alt="Sữa tươi 1L"><b>Sữa tươi 1L</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
-    <div class="card"><img src="images/products/banh-quy-bo.png" alt="Bánh quy bơ"><b>Bánh quy bơ</b><span class="price">32.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
-    <div class="card"><img src="images/products/nuoc-cam-ep.png" alt="Nước cam ép"><b>Nước cam ép</b><span class="price">18.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
-    <div class="card"><img src="images/products/tao-do-1kg.png" alt="Táo đỏ 1kg"><b>Táo đỏ 1kg</b><span class="price">45.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
-</section>
-
-<section class="promo">
-    <h2>Giảm 10% đơn đầu tiên</h2>
-    <p>Đăng ký hội viên để nhận ưu đãi và tích điểm.</p>
-    <p><a class="btn" href="member.html">Đăng ký hội viên</a></p>
-</section>
+<h1>Giỏ hàng</h1>
+<p class="ok" id="thanhcong" role="status"></p>
+<p id="trong"></p>
+<div class="layout" id="noiDung">
+    <div>
+        <table id="gio">
+            <thead><tr><th>Sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Thành tiền</th><th></th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <aside>
+        <div class="box">
+            <p><span>Tạm tính</span><span id="tam"></span></p>
+            <p><span>Phí giao hàng</span><span id="ship"></span></p>
+            <p class="total"><span>Tổng tiền</span><span id="tong"></span></p>
+        </div>
+        <div class="box">
+            <h2>Thông tin nhận hàng</h2>
+            <label for="ten">Họ tên</label><input id="ten"><span class="err" id="l_ten"></span>
+            <label for="sdt">Số điện thoại</label><input id="sdt" inputmode="numeric"><span class="err" id="l_sdt"></span>
+            <label for="diachi">Địa chỉ</label><input id="diachi"><span class="err" id="l_diachi"></span>
+            <p><button class="btn btn-yellow" id="nutDat" onclick="datHang()">Đặt hàng</button></p>
+        </div>
+    </aside>
+</div>
 </main>
 <footer>
-    &copy; Copyright 2026 - MiniMart 
+    &copy; Copyright 2026 - MiniMart · Siêu thị của bạn · Hotline: 1900 0000
 </footer>
 <script src="js/home.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>
