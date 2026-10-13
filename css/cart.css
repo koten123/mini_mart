@@ -1,70 +1,101 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Giỏ hàng – MiniMart</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cart.css">
-</head>
-<body>
-<header class="site-header">
-    <div class="header-main">
-        <a class="brand" href="index.html" aria-label="MiniMart - Trang chủ">
-            <img class="brand-mark" src="images/logo-mark.png" alt="">
-            <span class="brand-copy">
-                <strong><span>MINI</span><em>MART</em></strong>
-                <small>SIÊU THỊ CỦA BẠN</small>
-            </span>
-        </a>
-        <p class="site-slogan">Mua nhanh, đủ dùng mỗi ngày<span>Thực phẩm tươi ngon · Giá tốt mỗi ngày</span></p>
-        <button class="burger" type="button" onclick="doiMenu()" aria-label="Mở menu" aria-controls="menu">☰</button>
-    </div>
-    <nav id="menu" aria-label="Điều hướng chính">
-        <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="products.html">Sản phẩm</a></li>
-            <li><a href="product-detail.html">Chi tiết</a></li>
-            <li><a href="cart.html">Giỏ hàng</a></li>
-            <li><a href="member.html">Hội viên</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-<h1>Giỏ hàng</h1>
-<div class="layout">
-    <div>
-        <p id="trong">Giỏ hàng của bạn đang trống. <a href="products.html">Chọn sản phẩm</a></p>
-        <table id="gio">
-            <thead><tr><th>Sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Thành tiền</th><th></th></tr></thead>
-            <tbody id="cartBody"></tbody>
-        </table>
-    </div>
-    <aside>
-        <div class="box">
-            <p><span>Tạm tính</span><span id="tam"></span></p>
-            <p><span>Phí giao hàng</span><span id="ship"></span></p>
-            <p class="total"><span>Tổng tiền</span><span id="tong"></span></p>
-        </div>
-        <div class="box">
-            <h2>Thông tin nhận hàng</h2>
-            <label for="ten">Họ tên</label><input id="ten"><span class="err" id="l_ten"></span>
-            <label for="sdt">Số điện thoại</label><input id="sdt" inputmode="numeric"><span class="err" id="l_sdt"></span>
-            <label for="diachi">Địa chỉ</label><input id="diachi"><span class="err" id="l_diachi"></span>
-            <p><button class="btn btn-green" id="nutDat" onclick="datHang()">Đặt hàng</button></p>
-            <p class="ok" id="thanhcong" role="status"></p>
-        </div>
-    </aside>
-</div>
-</main>
-<footer>
-    &copy; Copyright 2026 - MiniMart · Hotline: 1900 0000
-</footer>
-<script src="js/home.js"></script>
-<script src="js/products-data.js"></script>
-<script src="js/cart.js"></script>
-</body>
-</html>
+.layout {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    align-items: start;
+    gap: 20px;
+}
+
+.layout > div,
+.layout aside {
+    min-width: 0px;
+}
+
+.layout table {
+    box-shadow: 0px 5px 18px rgba(7, 87, 107, 0.08);
+}
+
+.layout th,
+.layout td {
+    padding: 11px 10px;
+}
+
+.layout td button {
+    min-width: 27px;
+    min-height: 28px;
+    border: 1px solid #cbdfe4;
+    border-radius: 7px;
+    background-color: white;
+    color: #07576b;
+    cursor: pointer;
+}
+
+.layout td button:hover {
+    background-color: #eaf7fa;
+}
+
+.box {
+    margin-bottom: 15px;
+    padding: 17px;
+    border: 1px solid #dcebef;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0px 5px 18px rgba(7, 87, 107, 0.08);
+}
+
+.box h2 {
+    margin: 0px 0px 12px;
+    color: #07576b;
+    font-size: 19px;
+}
+
+.box p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0px;
+    padding: 9px 0px;
+    border-bottom: 1px solid #edf4f6;
+}
+
+.box p:last-child {
+    border-bottom: none;
+}
+
+.box .total {
+    color: #07576b;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.box label {
+    display: block;
+    margin: 10px 0px 5px;
+    font-weight: bold;
+}
+
+#trong {
+    display: none;
+    padding: 24px;
+    border: 1px dashed #dcebef;
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+}
+
+#trong a {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 820px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .layout th,
+    .layout td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+}
