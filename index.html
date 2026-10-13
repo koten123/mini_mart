@@ -4,39 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trang chủ – MiniMart</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-
-<header class="site-header">
-    <div class="header-main">
-        <a class="brand" href="index.html" aria-label="MiniMart - Trang chủ">
-            <img class="brand-mark" src="images/logo-mark.png" alt="">
-            <span class="brand-copy"> 
-                <strong><span>MINI</span><em>MART</em></strong>
-                <small>SIÊU THỊ CỦA BẠN</small>
-            </span>
-        </a>
-
-        <p class="site-slogan">
-            Mua nhanh, đủ dùng mỗi ngày
-            <span>Thực phẩm tươi ngon · Giá tốt mỗi ngày</span>
-        </p>
-
-        <button class="burger"
-                type="button"
-                onclick="doiMenu()"
-                aria-label="Mở menu"
-                aria-controls="menu">☰</button>
-    </div>
-
-    <nav id="menu" aria-label="Điều hướng chính">
+<header>
+    <a href="index.html"><img class="logo" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn"></a>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
@@ -46,105 +23,43 @@
         </ul>
     </nav>
 </header>
-
 <main>
-    <form class="search" action="products.html" method="get">
-        <input name="q"
-               type="search"
-               placeholder="Tìm sản phẩm..."
-               aria-label="Tìm sản phẩm">
-        <button class="btn btn-green" type="submit">Tìm</button>
-    </form>
+<form class="search" action="products.html">
+    <input type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm">
+    <button class="btn btn-yellow" type="submit">Tìm</button>
+</form>
 
-    <section class="banner">
-        <div class="banner-copy">
-            <span class="eyebrow">TƯƠI NGON MỖI NGÀY</span>
-            <h1>Đi chợ thật dễ,<br><em>niềm vui thật gần.</em></h1>
-            <p>Thực phẩm và nhu yếu phẩm cho cả nhà, chọn nhanh trong vài phút.</p>
-            <a class="btn btn-gold" href="products.html">
-                Khám phá sản phẩm <span aria-hidden="true">→</span>
-            </a>
-        </div>
+<section class="banner">
+    <h1>Đi chợ nhanh, giao tận nhà</h1>
+    <p>Sữa, bánh, nước uống và rau củ tươi – giao trong 60 phút.</p>
+    <a class="btn btn-yellow" href="products.html">Mua ngay</a>
+</section>
 
-        <div class="banner-art" aria-hidden="true">
-            <span class="art-spark">✦</span>
-            <span class="art-bag">🛒</span>
-            <span class="art-dot"></span>
-        </div>
-    </section>
+<h2>Danh mục</h2>
+<section>
+    <a class="cat" href="products.html">Sữa</a>
+    <a class="cat" href="products.html">Bánh</a>
+    <a class="cat" href="products.html">Nước uống</a>
+    <a class="cat" href="products.html">Rau củ quả</a>
+</section>
 
-    <h2>Danh mục</h2>
+<h2>Sản phẩm nổi bật</h2>
+<section>
+    <div class="card"><img src="images/products/sua-tuoi-1l.png" alt="Sữa tươi 1L"><b>Sữa tươi 1L</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card"><img src="images/products/banh-quy-bo.png" alt="Bánh quy bơ"><b>Bánh quy bơ</b><span class="price">32.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card"><img src="images/products/nuoc-cam-ep.png" alt="Nước cam ép"><b>Nước cam ép</b><span class="price">18.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card"><img src="images/products/tao-do-1kg.png" alt="Táo đỏ 1kg"><b>Táo đỏ 1kg</b><span class="price">45.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+</section>
 
-    <section class="categories-grid">
-        <a class="cat" href="products.html"><span>🥛</span>Sữa</a>
-        <a class="cat" href="products.html"><span>🍪</span>Bánh</a>
-        <a class="cat" href="products.html"><span>🥤</span>Nước uống</a>
-        <a class="cat" href="products.html"><span>🥬</span>Rau củ quả</a>
-    </section>
-
-    <h2>Sản phẩm nổi bật</h2>
-
-    <section class="product-grid featured-products">
-        <article class="card">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/14127931/pexels-photo-14127931.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Sữa tươi trong chai thủy tinh"
-                     loading="lazy">
-            </div>
-            <span class="product-tag">Bán chạy</span>
-            <b>Sữa tươi 1L</b>
-            <span class="price">25.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/5848188/pexels-photo-5848188.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Bánh quy"
-                     loading="lazy">
-            </div>
-            <b>Bánh quy bơ</b>
-            <span class="price">32.000đ</span>
-            <a class="btn" href="products.html">Xem thêm</a>
-        </article>
-
-        <article class="card">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/6412582/pexels-photo-6412582.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Nước cam ép tươi"
-                     loading="lazy">
-            </div>
-            <b>Nước cam ép</b>
-            <span class="price">18.000đ</span>
-            <a class="btn" href="products.html">Xem thêm</a>
-        </article>
-
-        <article class="card">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/36062583/pexels-photo-36062583.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Táo đỏ tươi"
-                     loading="lazy">
-            </div>
-            <b>Táo đỏ 1kg</b>
-            <span class="price">45.000đ</span>
-            <a class="btn" href="products.html">Xem thêm</a>
-        </article>
-    </section>
-
-    <section class="promo">
-        <span class="eyebrow">DÀNH RIÊNG CHO BẠN</span>
-        <h2>Giảm 10% đơn đầu tiên</h2>
-        <p>Đăng ký hội viên để nhận ưu đãi và tích điểm.</p>
-        <p>
-            <a class="btn btn-green" href="member.html">Đăng ký hội viên</a>
-        </p>
-    </section>
+<section class="promo">
+    <h2>Giảm 10% đơn đầu tiên</h2>
+    <p>Đăng ký hội viên để nhận ưu đãi và tích điểm.</p>
+    <p><a class="btn" href="member.html">Đăng ký hội viên</a></p>
+</section>
 </main>
-
 <footer>
-    &copy; Copyright 2026 - MiniMart
+    &copy; Copyright 2026 - MiniMart 
 </footer>
-
 <script src="js/home.js"></script>
 </body>
 </html>

@@ -3,40 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Giỏ hàng – MiniMart</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+    <title>Trang chủ – MiniMart</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-
-<header class="site-header">
-    <div class="header-main">
-        <a class="brand" href="index.html" aria-label="MiniMart - Trang chủ">
-            <img class="brand-mark" src="images/logo-mark.png" alt="">
-            <span class="brand-copy">
-                <strong><span>MINI</span><em>MART</em></strong>
-                <small>SIÊU THỊ CỦA BẠN</small>
-            </span>
-        </a>
-
-        <p class="site-slogan">
-            Mua nhanh, đủ dùng mỗi ngày
-            <span>Thực phẩm tươi ngon · Giá tốt mỗi ngày</span>
-        </p>
-
-        <button class="burger"
-                type="button"
-                onclick="doiMenu()"
-                aria-label="Mở menu"
-                aria-controls="menu">☰</button>
-    </div>
-
-    <nav id="menu" aria-label="Điều hướng chính">
+<header>
+    <a href="index.html"><img class="logo" src="images/logo.png" alt="MiniMart – Siêu thị của bạn"></a>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
@@ -46,118 +23,43 @@
         </ul>
     </nav>
 </header>
-
 <main>
-    <h1>Giỏ hàng</h1>
+<form class="search" action="products.html">
+    <input type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm">
+    <button class="btn btn-yellow" type="submit">Tìm</button>
+</form>
 
-    <div class="layout">
-        <div>
-            <p id="trong">
-                Giỏ hàng của bạn đang trống.
-                <a href="products.html">Chọn sản phẩm</a>
-            </p>
+<section class="banner">
+    <h1>Đi chợ nhanh, giao tận nhà</h1>
+    <p>Sữa, bánh, nước uống và rau củ tươi – giao trong 60 phút.</p>
+    <a class="btn btn-yellow" href="products.html">Mua ngay</a>
+</section>
 
-            <table id="gio">
-                <thead>
-                    <tr>
-                        <th>Sản phẩm</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
-                        <th></th>
-                    </tr>
-                </thead>
+<h2>Danh mục</h2>
+<section>
+    <a class="cat" href="products.html">Sữa</a>
+    <a class="cat" href="products.html">Bánh</a>
+    <a class="cat" href="products.html">Nước uống</a>
+    <a class="cat" href="products.html">Rau củ quả</a>
+</section>
 
-                <tbody>
-                    <tr data-gia="25000">
-                        <td>🥛 Sữa tươi 1L</td>
-                        <td>25.000đ</td>
-                        <td>
-                            <button onclick="doiSL(this,-1)" aria-label="Giảm">−</button>
-                            <span class="sl">1</span>
-                            <button onclick="doiSL(this,1)" aria-label="Tăng">+</button>
-                        </td>
-                        <td class="tt"></td>
-                        <td><button onclick="xoa(this)">Xóa</button></td>
-                    </tr>
+<h2>Sản phẩm nổi bật</h2>
+<section>
+    <div class="card"><img src="images/products/sua-tuoi-1l.png" alt="Sữa tươi 1L"><b>Sữa tươi 1L</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card"><img src="images/products/banh-quy-bo.png" alt="Bánh quy bơ"><b>Bánh quy bơ</b><span class="price">32.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card"><img src="images/products/nuoc-cam-ep.png" alt="Nước cam ép"><b>Nước cam ép</b><span class="price">18.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card"><img src="images/products/tao-do-1kg.png" alt="Táo đỏ 1kg"><b>Táo đỏ 1kg</b><span class="price">45.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+</section>
 
-                    <tr data-gia="32000">
-                        <td>🍪 Bánh quy bơ</td>
-                        <td>32.000đ</td>
-                        <td>
-                            <button onclick="doiSL(this,-1)" aria-label="Giảm">−</button>
-                            <span class="sl">2</span>
-                            <button onclick="doiSL(this,1)" aria-label="Tăng">+</button>
-                        </td>
-                        <td class="tt"></td>
-                        <td><button onclick="xoa(this)">Xóa</button></td>
-                    </tr>
-
-                    <tr data-gia="18000">
-                        <td>🧃 Nước cam ép</td>
-                        <td>18.000đ</td>
-                        <td>
-                            <button onclick="doiSL(this,-1)" aria-label="Giảm">−</button>
-                            <span class="sl">1</span>
-                            <button onclick="doiSL(this,1)" aria-label="Tăng">+</button>
-                        </td>
-                        <td class="tt"></td>
-                        <td><button onclick="xoa(this)">Xóa</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <aside>
-            <div class="box">
-                <p>
-                    <span>Tạm tính</span>
-                    <span id="tam"></span>
-                </p>
-
-                <p>
-                    <span>Phí giao hàng</span>
-                    <span id="ship"></span>
-                </p>
-
-                <p class="total">
-                    <span>Tổng tiền</span>
-                    <span id="tong"></span>
-                </p>
-            </div>
-
-            <div class="box">
-                <h2>Thông tin nhận hàng</h2>
-
-                <label for="ten">Họ tên</label>
-                <input id="ten" type="text" autocomplete="name">
-                <span class="err" id="l_ten"></span>
-
-                <label for="sdt">Số điện thoại</label>
-                <input id="sdt" type="tel" inputmode="numeric" autocomplete="tel">
-                <span class="err" id="l_sdt"></span>
-
-                <label for="diachi">Địa chỉ</label>
-                <input id="diachi" type="text" autocomplete="street-address">
-                <span class="err" id="l_diachi"></span>
-
-                <p>
-                    <button class="btn btn-green" id="nutDat" onclick="datHang()">
-                        Đặt hàng
-                    </button>
-                </p>
-
-                <p class="ok" id="thanhcong" role="status"></p>
-            </div>
-        </aside>
-    </div>
+<section class="promo">
+    <h2>Giảm 10% đơn đầu tiên</h2>
+    <p>Đăng ký hội viên để nhận ưu đãi và tích điểm.</p>
+    <p><a class="btn" href="member.html">Đăng ký hội viên</a></p>
+</section>
 </main>
-
 <footer>
     &copy; Copyright 2026 - MiniMart 
 </footer>
-
 <script src="js/home.js"></script>
-<script src="js/cart.js"></script>
 </body>
 </html>

@@ -4,39 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chi tiết sản phẩm – MiniMart</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/detail.css">
 </head>
 <body>
-
-<header class="site-header">
-    <div class="header-main">
-        <a class="brand" href="index.html" aria-label="MiniMart - Trang chủ">
-            <img class="brand-mark" src="images/logo-mark.png" alt="">
-            <span class="brand-copy">
-                <strong><span>MINI</span><em>MART</em></strong>
-                <small>SIÊU THỊ CỦA BẠN</small>
-            </span>
-        </a>
-
-        <p class="site-slogan">
-            Mua nhanh, đủ dùng mỗi ngày
-            <span>Thực phẩm tươi ngon · Giá tốt mỗi ngày</span>
-        </p>
-
-        <button class="burger"
-                type="button"
-                onclick="doiMenu()"
-                aria-label="Mở menu"
-                aria-controls="menu">☰</button>
-    </div>
-
-    <nav id="menu" aria-label="Điều hướng chính">
+<header>
+    <a href="index.html"><img class="logo" src="images/logo.png" alt="MiniMart – Siêu thị của bạn"></a>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
@@ -46,48 +23,31 @@
         </ul>
     </nav>
 </header>
-
 <main>
-    <p class="back">
-        <a href="products.html">← Quay lại danh sách sản phẩm</a>
-    </p>
+<p class="back"><a href="products.html">← Quay lại danh sách sản phẩm</a></p>
 <section class="detail">
-    <img class="big" id="anhSP" src="images/suatuo.png" alt="Sữa tươi 1L">
-<div>
-    <h1 id="tenSP">Sữa tươi 1L</h1>
-    <p class="price-lg" id="giaSP">25.000đ</p>                        <!-- ← đổi -->
+    <img class="big" id="anhSP" src="images/products/sua-tuoi-1l.png" alt="Sữa tươi 1L">
+    <div>
+        <h1 id="tenSP">Sữa tươi 1L</h1>
+        <p class="price-lg" id="giaSP">25.000đ</p>
         <p class="ok">Còn hàng</p>
-        <p id="moTaSP">Sữa tươi nguyên chất, ít đường, hộp 1 lít. Dùng ngon nhất khi uống lạnh.</p>   <!-- ← đổi -->
+        <p>Sản phẩm được MiniMart kiểm tra chất lượng trước khi giao đến tay bạn.</p>
         <div class="qty">
-    
-                <span>Số lượng:</span>
-                <button onclick="doiSL(-1)" aria-label="Giảm">−</button>
-                <span id="sl">1</span>
-                <button onclick="doiSL(1)" aria-label="Tăng">+</button>
-            </div>
-
-            <button class="btn btn-green" onclick="themGio()">
-                Thêm vào giỏ
-            </button>
-
-            <p id="thongbao" class="ok" role="status"></p>
+            <span>Số lượng:</span>
+            <button onclick="doiSL(-1)" aria-label="Giảm">−</button><span id="sl">1</span><button onclick="doiSL(1)" aria-label="Tăng">+</button>
         </div>
-    </section>
-
-    <section class="more">
-        <h2>Thông tin thêm</h2>
-        <p>
-            Xuất xứ: Việt Nam. Bảo quản: nơi khô mát,
-            sau khi mở nên dùng trong 3 ngày.
-            Hạn dùng: 6 tháng kể từ ngày sản xuất.
-        </p>
-    </section>
+        <button class="btn btn-yellow" onclick="themGio()">Thêm vào giỏ</button>
+        <p id="thongbao" class="ok" role="status"></p>
+    </div>
+</section>
+<section class="more">
+    <h2>Thông tin thêm</h2>
+    <p>Giao hàng trong 60 phút với đơn nội thành. Đổi trả trong 24 giờ nếu sản phẩm lỗi hoặc không đúng mô tả. Bảo quản nơi khô mát, tránh ánh nắng trực tiếp.</p>
+</section>
 </main>
-
 <footer>
-    &copy; Copyright 2026 - MiniMart 
+    &copy; Copyright 2026 - MiniMart · Siêu thị của bạn · Hotline: 1900 0000
 </footer>
-
 <script src="js/home.js"></script>
 <script src="js/detail.js"></script>
 </body>

@@ -4,39 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sản phẩm – MiniMart</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
-
-<header class="site-header">
-    <div class="header-main">
-        <a class="brand" href="index.html" aria-label="MiniMart - Trang chủ">
-            <img class="brand-mark" src="images/logo-mark.png" alt="">
-            <span class="brand-copy">
-                <strong><span>MINI</span><em>MART</em></strong>
-                <small>SIÊU THỊ CỦA BẠN</small>
-            </span>
-        </a>
-
-        <p class="site-slogan">
-            Mua nhanh, đủ dùng mỗi ngày
-            <span>Thực phẩm tươi ngon · Giá tốt mỗi ngày</span>
-        </p>
-
-        <button class="burger"
-                type="button"
-                onclick="doiMenu()"
-                aria-label="Mở menu"
-                aria-controls="menu">☰</button>
-    </div>
-
-    <nav id="menu" aria-label="Điều hướng chính">
+<header>
+    <a href="index.html"><img class="logo" src="images/logo.png" alt="MiniMart – Siêu thị của bạn"></a>
+    <button class="burger" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    <nav id="menu">
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
@@ -46,178 +23,35 @@
         </ul>
     </nav>
 </header>
-
 <main>
-    <h1>Sản phẩm</h1>
-
-    <input id="timkiem"
-           type="search"
-           placeholder="Tìm theo tên sản phẩm..."
-           aria-label="Tìm theo tên"
-           oninput="loc()">
-
-    <div class="filters">
-        <button class="btn active"
-                onclick="chonDanhMuc('tatca',this)">Tất cả</button>
-
-        <button class="btn"
-                onclick="chonDanhMuc('sua',this)">Sữa</button>
-
-        <button class="btn"
-                onclick="chonDanhMuc('banh',this)">Bánh</button>
-
-        <button class="btn"
-                onclick="chonDanhMuc('nuoc',this)">Nước uống</button>
-
-        <button class="btn"
-                onclick="chonDanhMuc('rau',this)">Rau củ quả</button>
-    </div>
-
-    <p id="khongthay">
-        Không tìm thấy sản phẩm. Hãy thử từ khóa khác.
-    </p>
-
-    <section class="product-grid" aria-label="Danh sách sản phẩm">
-
-        <article class="card the" data-category="sua">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/14127931/pexels-photo-14127931.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Sữa tươi trong chai thủy tinh"
-                     loading="lazy">
-            </div>
-            <b>Sữa tươi 1L</b>
-            <span class="price">25.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="sua">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/4958139/pexels-photo-4958139.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Sản phẩm sữa"
-                     loading="lazy">
-            </div>
-            <b>Sữa chua uống</b>
-            <span class="price">8.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="sua">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/4109958/pexels-photo-4109958.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Phô mai lát"
-                     loading="lazy">
-            </div>
-            <b>Phô mai lát</b>
-            <span class="price">38.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="banh">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/5848188/pexels-photo-5848188.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Bánh quy"
-                     loading="lazy">
-            </div>
-            <b>Bánh quy bơ</b>
-            <span class="price">32.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="banh">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/8599585/pexels-photo-8599585.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Bánh mì sandwich"
-                     loading="lazy">
-            </div>
-            <b>Bánh mì sandwich</b>
-            <span class="price">15.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="nuoc">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/31012799/pexels-photo-31012799.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Chai nước khoáng"
-                     loading="lazy">
-            </div>
-            <b>Nước suối 500ml</b>
-            <span class="price">6.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="nuoc">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/6412582/pexels-photo-6412582.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Nước cam ép"
-                     loading="lazy">
-            </div>
-            <b>Nước cam ép</b>
-            <span class="price">18.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="nuoc">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/17650220/pexels-photo-17650220.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Lon nước ngọt"
-                     loading="lazy">
-            </div>
-            <b>Nước ngọt lon</b>
-            <span class="price">12.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="rau">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/7879834/pexels-photo-7879834.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Các loại rau củ tươi"
-                     loading="lazy">
-            </div>
-            <b>Rau cải xanh</b>
-            <span class="price">12.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="rau">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/38444066/pexels-photo-38444066.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Cà chua tươi"
-                     loading="lazy">
-            </div>
-            <b>Cà chua 500g</b>
-            <span class="price">20.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="rau">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/36062583/pexels-photo-36062583.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Táo đỏ tươi"
-                     loading="lazy">
-            </div>
-            <b>Táo đỏ 1kg</b>
-            <span class="price">45.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-        <article class="card the" data-category="rau">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/4114143/pexels-photo-4114143.jpeg?auto=compress&cs=tinysrgb&w=800"
-                     alt="Chuối chín"
-                     loading="lazy">
-            </div>
-            <b>Chuối 1kg</b>
-            <span class="price">25.000đ</span>
-            <a class="btn" href="product-detail.html">Xem chi tiết</a>
-        </article>
-
-    </section>
+<h1>Sản phẩm</h1>
+<input id="timkiem" type="search" placeholder="Tìm theo tên sản phẩm..." aria-label="Tìm theo tên" oninput="loc()">
+<div class="filters">
+    <button class="btn active" onclick="chonDanhMuc('tatca',this)">Tất cả</button>
+    <button class="btn" onclick="chonDanhMuc('sua',this)">Sữa</button>
+    <button class="btn" onclick="chonDanhMuc('banh',this)">Bánh</button>
+    <button class="btn" onclick="chonDanhMuc('nuoc',this)">Nước uống</button>
+    <button class="btn" onclick="chonDanhMuc('rau',this)">Rau củ quả</button>
+</div>
+<p id="khongthay">Không tìm thấy sản phẩm. Hãy thử từ khóa khác.</p>
+<section>
+    <div class="card the" data-category="sua"><img src="images/products/sua-tuoi-1l.png" alt="Sữa tươi 1L"><b>Sữa tươi 1L</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="sua"><img src="images/products/sua-chua-uong.png" alt="Sữa chua uống"><b>Sữa chua uống</b><span class="price">8.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="sua"><img src="images/products/pho-mai-lat.png" alt="Phô mai lát"><b>Phô mai lát</b><span class="price">38.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="banh"><img src="images/products/banh-quy-bo.png" alt="Bánh quy bơ"><b>Bánh quy bơ</b><span class="price">32.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="banh"><img src="images/products/banh-mi-sandwich.png" alt="Bánh mì sandwich"><b>Bánh mì sandwich</b><span class="price">15.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="nuoc"><img src="images/products/nuoc-suoi-500ml.png" alt="Nước suối 500ml"><b>Nước suối 500ml</b><span class="price">6.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="nuoc"><img src="images/products/nuoc-cam-ep.png" alt="Nước cam ép"><b>Nước cam ép</b><span class="price">18.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="nuoc"><img src="images/products/nuoc-ngot-lon.png" alt="Nước ngọt lon"><b>Nước ngọt lon</b><span class="price">12.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><img src="images/products/rau-cai-xanh.png" alt="Rau cải xanh"><b>Rau cải xanh</b><span class="price">12.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><img src="images/products/ca-chua-500g.png" alt="Cà chua 500g"><b>Cà chua 500g</b><span class="price">20.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><img src="images/products/tao-do-1kg.png" alt="Táo đỏ 1kg"><b>Táo đỏ 1kg</b><span class="price">45.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+    <div class="card the" data-category="rau"><img src="images/products/chuoi-1kg.png" alt="Chuối 1kg"><b>Chuối 1kg</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html">Xem chi tiết</a></div>
+</section>
 </main>
-
 <footer>
-    &copy; Copyright 2026 - MiniMart 
+    &copy; Copyright 2026 - MiniMart · Siêu thị của bạn · Hotline: 1900 0000
 </footer>
-
 <script src="js/home.js"></script>
 <script src="js/products.js"></script>
 </body>
