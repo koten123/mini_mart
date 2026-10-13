@@ -7,12 +7,17 @@ function layNguoiDung() {
     try { return localStorage.getItem("minimart_user"); } catch (e) { return null; }
 }
 
+// Giỏ gắn với tên đã viết thường, nên "An" và "an" dùng chung một giỏ
+function khoaGio() {
+    return "minimart_gio_" + (layNguoiDung() || "").toLowerCase();
+}
+
 function docGio() {
-    try { return JSON.parse(localStorage.getItem("minimart_gio_" + layNguoiDung())) || []; } catch (e) { return []; }
+    try { return JSON.parse(localStorage.getItem(khoaGio())) || []; } catch (e) { return []; }
 }
 
 function luuGio(gio) {
-    try { localStorage.setItem("minimart_gio_" + layNguoiDung(), JSON.stringify(gio)); } catch (e) {}
+    try { localStorage.setItem(khoaGio(), JSON.stringify(gio)); } catch (e) {}
 }
 
 // Gắn tên, giá, ảnh của thẻ sản phẩm vào link "Xem chi tiết"
