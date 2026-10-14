@@ -1,6 +1,8 @@
 // Bản demo phía trình duyệt: chỉ lưu tên hội viên và mã băm mật khẩu, không lưu mật khẩu thô.
 // Website chưa có backend; không dùng cơ chế này cho tài khoản thật.
 var KHOA_TAI_KHOAN = "minimartMemberDemo";
+// Trang chi tiết đọc khóa này để biết đã đăng nhập hay chưa.
+var KHOA_DANG_NHAP = "minimart_user";
 
 function layTen() {
     return document.getElementById("hoten").value.trim();
@@ -48,6 +50,12 @@ function taiKhoanDaLuu() {
     }
 }
 
+function hienKhuHoiVien(ten) {
+    document.getElementById("tenHoiVien").innerText = ten;
+    document.getElementById("khuKhach").style.display = "none";
+    document.getElementById("khuHoiVien").style.display = "block";
+}
+
 async function dangKy() {
     baoLoi("");
     baoThanhCong("");
@@ -71,7 +79,7 @@ async function dangNhap() {
     try {
         var taiKhoan = taiKhoanDaLuu();
         if (!taiKhoan) {
-            baoLoi("Bạn chưa có tài khoản hội viên. Hãy bấm Tạo hội viên trước.");
+            baoLoi("Bạn chưa có tài khoản hội viên. Hãy bấm Đăng ký trước.");
             return;
         }
         var matKhauHash = await bamMatKhau(layMatKhau());
@@ -79,9 +87,8 @@ async function dangNhap() {
             baoLoi("Tên hội viên hoặc mật khẩu chưa chính xác.");
             return;
         }
-        document.getElementById("tenHoiVien").innerText = taiKhoan.ten;
-        document.getElementById("khuKhach").style.display = "none";
-        document.getElementById("khuHoiVien").style.display = "block";
+        localStorage.setItem(KHOA_DANG_NHAP, taiKhoan.ten);
+        hienKhuHoiVien(taiKhoan.ten);
         baoThanhCong("");
     } catch (loi) {
         baoLoi(loi.message || "Không thể đăng nhập trên trình duyệt này.");
@@ -89,8 +96,14 @@ async function dangNhap() {
 }
 
 function dangXuat() {
+    localStorage.removeItem(KHOA_DANG_NHAP);
     document.getElementById("khuHoiVien").style.display = "none";
     document.getElementById("khuKhach").style.display = "block";
     baoLoi("");
     baoThanhCong("Bạn đã đăng xuất.");
+}
+
+// Quay lại trang khi vẫn đang đăng nhập thì hiện luôn khu hội viên.
+if (localStorage.getItem(KHOA_DANG_NHAP)) {
+    hienKhuHoiVien(localStorage.getItem(KHOA_DANG_NHAP));
 }

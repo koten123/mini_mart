@@ -17,7 +17,6 @@
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
-            <li><a href="product-detail.html">Chi tiết</a></li>
             <li><a href="cart.html">Giỏ hàng</a></li>
             <li><a href="member.html">Hội viên</a></li>
         </ul>
@@ -26,12 +25,12 @@
 <main>
 <h1>Giỏ hàng</h1>
 <p class="ok" id="thanhcong" role="status"></p>
-<p id="trong"></p>
+<p id="trong">Giỏ hàng của bạn đang trống. <a href="products.html">Mua sắm ngay</a></p>
 <div class="layout" id="noiDung">
     <div>
         <table id="gio">
             <thead><tr><th>Sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Thành tiền</th><th></th></tr></thead>
-            <tbody></tbody>
+            <tbody id="cartBody"></tbody>
         </table>
     </div>
     <aside>
