@@ -17,7 +17,6 @@
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
-            <li><a href="product-detail.html">Chi tiết</a></li>
             <li><a href="cart.html">Giỏ hàng</a></li>
             <li><a href="member.html">Hội viên</a></li>
         </ul>
@@ -49,19 +48,24 @@
 
 <section id="khuHoiVien">
     <h1>Xin chào, <span id="tenHoiVien"></span></h1>
-   <table>
-  <thead>
-    <tr><th>Ngày</th><th>Mã đơn</th><th>Tổng tiền</th><th>Điểm nhận</th></tr>
-  </thead>
-  <tbody id="lichSuMuaHang">
-    <tr><td colspan="4">Đăng nhập để xem lịch sử mua hàng.</td></tr>
-  </tbody>
-</table>
+    <div class="badges">
+        <div class="badge"><small>ĐIỂM</small><span id="diemHV">0</span></div>
+        <div class="badge"><small>HẠNG</small><span id="hangHV">Đồng</span></div>
+    </div>
+    <table>
+        <thead>
+            <tr><th>Ngày</th><th>Mã đơn</th><th>Tổng tiền</th><th>Điểm nhận</th></tr>
+        </thead>
+        <tbody id="lichSuMuaHang">
+            <tr><td colspan="4">Đăng nhập để xem lịch sử mua hàng.</td></tr>
+        </tbody>
+    </table>
 
     <h2>Ưu đãi riêng cho bạn</h2>
     <div class="box">
         <p>Chúc mừng sinh nhật! Bạn được giảm 15% trong tuần sinh nhật.</p>
         <p>Đơn hàng đầu tiên của bạn được giảm 10%.</p>
+    </div>
     <p class="links">
         <a class="btn btn-yellow" href="products.html">Mua sắm</a>
         <a class="btn btn-line" href="cart.html">Giỏ hàng</a>

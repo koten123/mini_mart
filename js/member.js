@@ -50,8 +50,38 @@ function taiKhoanDaLuu() {
     }
 }
 
+// Hạng theo tổng điểm: sửa ngưỡng ở đây nếu muốn.
+function hangTheoDiem(diem) {
+    return diem >= 150 ? "Vàng" : diem >= 50 ? "Bạc" : "Đồng";
+}
+
+// Đọc đơn hàng của riêng tài khoản này (cart.js ghi cùng khóa), vẽ lịch sử và tính điểm/hạng.
+function veLichSu(ten) {
+    var ds = [];
+    try { ds = JSON.parse(localStorage.getItem("minimart_orders_" + ten.toLocaleLowerCase("vi")) || "[]"); } catch (e) { ds = []; }
+    if (!Array.isArray(ds)) ds = [];
+    var tbody = document.getElementById("lichSuMuaHang"), tongDiem = 0;
+    tbody.innerHTML = "";
+    if (!ds.length) {
+        tbody.innerHTML = '<tr><td colspan="4">Bạn chưa có đơn hàng nào.</td></tr>';
+    }
+    ds.slice().reverse().forEach(function (don) {
+        var tr = document.createElement("tr");
+        [don.ngay, don.ma, Number(don.tong).toLocaleString("vi-VN") + "đ", "+" + don.diem].forEach(function (giaTri) {
+            var td = document.createElement("td");
+            td.textContent = giaTri;
+            tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+    });
+    ds.forEach(function (don) { tongDiem += Number(don.diem) || 0; });
+    document.getElementById("diemHV").innerText = tongDiem;
+    document.getElementById("hangHV").innerText = hangTheoDiem(tongDiem);
+}
+
 function hienKhuHoiVien(ten) {
     document.getElementById("tenHoiVien").innerText = ten;
+    veLichSu(ten);
     document.getElementById("khuKhach").style.display = "none";
     document.getElementById("khuHoiVien").style.display = "block";
 }
