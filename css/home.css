@@ -265,3 +265,21 @@
         padding: 23px 16px;
     }
 }
+
+/* Nhãn "Bán chạy" nằm đè lên góc ảnh, không chiếm chỗ nên các thẻ luôn cao bằng nhau */
+.featured-products .card {
+    position: relative;
+}
+
+.featured-products .product-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 1;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background-color: #f0b323;
+    color: #0b3c4f;
+    font-size: 12px;
+    font-weight: bold;
+}
