@@ -87,8 +87,8 @@ async function dangNhap() {
             baoLoi("Tên hội viên hoặc mật khẩu chưa chính xác.");
             return;
         }
-        localStorage.setItem(KHOA_DANG_NHAP, taiKhoan.ten);
         hienKhuHoiVien(taiKhoan.ten);
+        localStorage.setItem(KHOA_DANG_NHAP, taiKhoan.ten);
         baoThanhCong("");
     } catch (loi) {
         baoLoi(loi.message || "Không thể đăng nhập trên trình duyệt này.");
