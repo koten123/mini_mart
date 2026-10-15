@@ -283,3 +283,18 @@
     font-size: 12px;
     font-weight: bold;
 }
+
+/* Danh mục có thêm ô "Tất cả": 5 ô một hàng trên máy tính; máy nhỏ thì ô "Tất cả" chiếm cả hàng đầu */
+.categories-grid {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+@media screen and (max-width: 980px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categories-grid .cat:first-child {
+        grid-column: 1 / -1;
+    }
+}

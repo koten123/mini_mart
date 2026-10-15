@@ -32,6 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var thamSo = new URLSearchParams(window.location.search);
     var tuKhoa = thamSo.get("q");
     if (tuKhoa) document.getElementById("timkiem").value = tuKhoa;
+    // ?loai=sua... từ trang chủ: bấm sẵn nút danh mục tương ứng (so khớp chuỗi, không dùng làm selector)
+    var loai = thamSo.get("loai");
+    var nuts = document.querySelectorAll(".filters .btn");
+    for (var i = 0; i < nuts.length; i++) {
+        if (loai && nuts[i].getAttribute("onclick").indexOf("'" + loai + "'") !== -1) {
+            chonDanhMuc(loai, nuts[i]);
+            break;
+        }
+    }
     loc();
 });
-
