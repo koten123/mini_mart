@@ -1,45 +1,98 @@
-var danhMuc = "tatca";
+// ===== products.js – TV2: Lọc danh mục + tìm kiếm =====
 
-function chonDanhMuc(loai, nut) {
-    danhMuc = loai;
-    var nuts = document.querySelectorAll(".filters .btn");
-    for (var i = 0; i < nuts.length; i++) nuts[i].classList.remove("active");
-    nut.classList.add("active");
-    loc();
+// Danh mục đang chọn (mặc định: tất cả)
+var loaiHienTai = "tatca";
+
+// Bấm nút ☰ để mở/đóng menu trên điện thoại
+function doiMenu() {
+  var menu = document.getElementById("menu");
+  if (menu.className === "nav") {
+    menu.className = "nav open";
+  } else {
+    menu.className = "nav";
+  }
 }
 
-// Lọc đồng thời theo danh mục và tên sản phẩm.
-function loc() {
-    var oTim = document.getElementById("timkiem");
-    var tu = oTim.value.trim().toLocaleLowerCase("vi");
-    var cacThe = document.getElementsByClassName("the");
-    var dem = 0;
-    for (var i = 0; i < cacThe.length; i++) {
-        var dungLoai = danhMuc === "tatca" || cacThe[i].dataset.category === danhMuc;
-        var ten = cacThe[i].querySelector("b").innerText.toLocaleLowerCase("vi");
-        var dungTen = ten.includes(tu);
-        if (dungLoai && dungTen) {
-            cacThe[i].style.display = "";
-            dem++;
-        } else {
-            cacThe[i].style.display = "none";
-        }
-    }
-    document.getElementById("khongthay").style.display = dem === 0 ? "block" : "none";
+// Bấm nút danh mục
+function loc(loai, nut) {
+  loaiHienTai = loai;
+
+  // Đổi màu nút đang chọn
+  var cacNut = document.getElementsByClassName("btn-loc");
+  for (var i = 0; i < cacNut.length; i++) {
+    cacNut[i].className = "btn-loc";
+  }
+  nut.className = "btn-loc active";
+
+  capNhat();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    var thamSo = new URLSearchParams(window.location.search);
-    var tuKhoa = thamSo.get("q");
-    if (tuKhoa) document.getElementById("timkiem").value = tuKhoa;
-    // ?loai=sua... từ trang chủ: bấm sẵn nút danh mục tương ứng (so khớp chuỗi, không dùng làm selector)
-    var loai = thamSo.get("loai");
-    var nuts = document.querySelectorAll(".filters .btn");
-    for (var i = 0; i < nuts.length; i++) {
-        if (loai && nuts[i].getAttribute("onclick").indexOf("'" + loai + "'") !== -1) {
-            chonDanhMuc(loai, nuts[i]);
-            break;
-        }
+// Gõ vào ô tìm kiếm
+function timKiem() {
+  capNhat();
+}
+
+// Ẩn/hiện thẻ theo cả danh mục và từ khóa
+function capNhat() {
+  var tuKhoa = document.getElementById("timkiem").value.toLowerCase().trim();
+  var cacThe = document.getElementsByClassName("the");
+  var soThe = 0; // đếm số thẻ đang hiện
+
+  for (var i = 0; i < cacThe.length; i++) {
+    var ten = cacThe[i].getElementsByClassName("card-ten")[0].innerText.toLowerCase();
+    var dungLoai = (loaiHienTai === "tatca" || cacThe[i].dataset.category === loaiHienTai);
+    var dungTen = ten.includes(tuKhoa);
+
+    if (dungLoai && dungTen) {
+      cacThe[i].style.display = "inline-block"; // thẻ nằm trong lưới inline-block
+      soThe = soThe + 1;
+    } else {
+      cacThe[i].style.display = "none";
     }
-    loc();
-});
+  }
+
+  // Không có thẻ nào -> hiện dòng "Không tìm thấy"
+  var dong = document.getElementById("khongthay");
+  if (soThe === 0) {
+    dong.style.display = "block";
+  } else {
+    dong.style.display = "none";
+  }
+}
+
+// Bấm "Thêm vào giỏ" trên một thẻ sản phẩm
+function themGio(nut) {
+  var the = nut.closest(".the");
+  var ten = the.getElementsByClassName("card-ten")[0].innerText;
+  var gia = Number(the.getElementsByClassName("card-gia")[0].innerText.replace(/\D/g, "")); // "32.000đ" -> 32000
+  var hinh = the.getElementsByTagName("img")[0].getAttribute("src"); // đường dẫn ảnh
+
+  var gio = [];
+  try { gio = JSON.parse(localStorage.getItem("gioHang")) || []; } catch (e) {}
+
+  var daCo = false;
+  for (var i = 0; i < gio.length; i++) {
+    if (gio[i].ten === ten) {
+      gio[i].sl = Math.min(gio[i].sl + 1, 10);
+      daCo = true;
+    }
+  }
+  if (!daCo) {
+    gio.push({ ten: ten, gia: gia, hinh: hinh, sl: 1 });
+  }
+  try { localStorage.setItem("gioHang", JSON.stringify(gio)); } catch (e) {}
+
+  var tb = document.getElementById("thongbao");
+  tb.innerText = "✔ Đã thêm \"" + ten + "\" vào giỏ hàng";
+  tb.style.display = "block";
+  setTimeout(function () {
+    tb.style.display = "none";
+  }, 2000);
+}
+
+// Ô tìm trên header gửi ?q=... sang trang này
+var tuKhoaURL = new URLSearchParams(location.search).get("q");
+if (tuKhoaURL) {
+  document.getElementById("timkiem").value = tuKhoaURL;
+  capNhat();
+}
