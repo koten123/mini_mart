@@ -1,300 +1,55 @@
-.search {
-    display: flex;
-    gap: 10px;
-    max-width: 760px;
-    margin: 0 auto 22px;
+/* ===== home.css – TV1: Trang chủ ===== */
+.banner { background: linear-gradient(135deg, var(--xanh) 0%, #6cc58a 100%); color: #fff; padding: 48px 0; }
+.banner-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.banner-chu { flex: 1; }
+.banner-chu h1 { font-size: 36px; line-height: 1.25; margin-bottom: 12px; }
+.banner-chu p { font-size: 17px; margin-bottom: 18px; max-width: 520px; }
+.o-tim { display: flex; gap: 8px; margin-bottom: 14px; max-width: 520px; }
+.o-tim input { flex: 1; min-width: 0; padding: 12px 14px; border: none; border-radius: 8px; font-size: 15px; }
+.banner-hinh { font-size: 60px; letter-spacing: 4px; text-align: center; width: 340px; white-space: nowrap; line-height: 1.3; }
+
+.luoi-dm { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.dm { background: #fff; border: 1px solid var(--vien); border-radius: 12px; padding: 16px 8px; text-align: center; font-weight: 600; transition: transform .2s, border-color .2s; }
+.dm:hover { transform: translateY(-4px); border-color: var(--xanh); }
+.dm span { display: block; font-size: 40px; margin-bottom: 6px; }
+
+.xem-them { text-align: center; margin-top: 22px; }
+
+.luoi-km { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.km { color: #fff; border-radius: 12px; padding: 24px; }
+.km h3 { font-size: 26px; margin-bottom: 6px; }
+.km a { display: inline-block; margin-top: 10px; font-weight: 700; text-decoration: underline; }
+.km-1 { background: linear-gradient(135deg, #ff8a1f, #ffb347); }
+.km-2 { background: linear-gradient(135deg, #2e9e4f, #58c47a); }
+.km-3 { background: linear-gradient(135deg, #3b82c4, #6aaee6); }
+
+@media (max-width: 992px) {
+  .luoi-dm { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .banner { padding: 32px 0; }
+  .banner-inner { flex-direction: column; text-align: center; }
+  .banner-chu h1 { font-size: 26px; }
+  .o-tim { margin-left: auto; margin-right: auto; }
+  .banner-hinh { font-size: 40px; width: auto; }
+  .luoi-km { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .luoi-dm { grid-template-columns: repeat(2, 1fr); }
 }
 
-.search input {
-    flex: 1;
-    min-width: 0px;
+/* Ảnh trong danh mục và banner */
+.dm img { display: block; width: 72px; height: 72px; object-fit: contain; margin: 0 auto 6px; }
+.banner-hinh { display: grid; grid-template-columns: repeat(2, 120px); gap: 12px; justify-content: center; width: auto; white-space: normal; }
+.banner-hinh img { width: 120px; height: 120px; object-fit: contain; padding: 8px; background: rgba(255,255,255,.92); border-radius: 16px; }
+@media (max-width: 768px) {
+  .banner-hinh { grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; }
+  .banner-hinh img { width: 100%; height: auto; padding: 4px; }
 }
 
-.search button {
-    flex: 0 0 auto;
-}
-
-.banner {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    min-height: 300px;
-    padding: 42px 50px;
-    overflow: hidden;
-    border-radius: 25px;
-    background-color: #07576b;
-    background-image: linear-gradient(115deg, #07576b, #08788a, #168ca0);
-    color: white;
-    box-shadow: 0px 15px 30px rgba(7, 87, 107, 0.17);
-}
-
-.banner::before {
-    position: absolute;
-    top: -180px;
-    right: 6%;
-    width: 340px;
-    height: 340px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    content: "";
-}
-
-.banner::after {
-    position: absolute;
-    right: 21%;
-    bottom: -125px;
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    background-color: rgba(239, 182, 37, 0.13);
-    content: "";
-}
-
-.banner-copy {
-    position: relative;
-    z-index: 1;
-    max-width: 640px;
-}
-
-.eyebrow {
-    display: inline-block;
-    margin-bottom: 8px;
-    color: #d69c07;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.banner .eyebrow {
-    color: #ffda6d;
-}
-
-.banner h1 {
-    margin: 0px 0px 12px;
-    font-size: 44px;
-    line-height: 1.2;
-}
-
-.banner h1 em {
-    color: #ffce46;
-    font-style: normal;
-}
-
-.banner p {
-    max-width: 490px;
-    margin: 0px 0px 22px;
-    color: #e5f5f7;
-    font-size: 17px;
-}
-
-.banner .btn {
-    padding: 13px 20px;
-}
-
-.banner-art {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: 215px;
-    height: 215px;
-    border: 1px solid rgba(255, 255, 255, 0.32);
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.09);
-}
-
-.art-bag {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 145px;
-    height: 145px;
-    border-radius: 35px;
-    background-color: white;
-    color: #07576b;
-    font-size: 74px;
-}
-
-.art-spark {
-    position: absolute;
-    top: 13px;
-    right: 26px;
-    color: #efb625;
-    font-size: 38px;
-}
-
-.art-dot {
-    position: absolute;
-    bottom: 26px;
-    left: 20px;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background-color: #efb625;
-}
-
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-
-.cat {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    min-height: 126px;
-    padding: 18px 12px;
-    border: 1px solid #dcebef;
-    border-radius: 16px;
-    background-color: white;
-    color: #173d50;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0px 5px 18px rgba(7, 87, 107, 0.08);
-}
-
-.cat span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 53px;
-    height: 53px;
-    border-radius: 15px;
-    background-color: #eaf7fa;
-    color: #07576b;
-    font-size: 31px;
-}
-
-.cat:hover {
-    border-color: #65bfd5;
-    background-color: #f6fcfd;
-    color: #07576b;
-}
-
-.promo {
-    margin-top: 34px;
-    padding: 28px;
-    border: 1px solid #f3d989;
-    border-radius: 20px;
-    background-color: #fff8df;
-    text-align: center;
-}
-
-.promo h2 {
-    margin-top: 0px;
-    color: #07576b;
-}
-
-.promo p {
-    color: #5d7781;
-}
-
-.promo .btn {
-    margin-top: 8px;
-}
-
-@media screen and (max-width: 980px) {
-    .banner {
-        padding: 35px 30px;
-    }
-
-    .banner h1 {
-        font-size: 36px;
-    }
-
-    .banner-art {
-        width: 170px;
-        height: 170px;
-    }
-
-    .art-bag {
-        width: 115px;
-        height: 115px;
-        font-size: 58px;
-    }
-
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .banner {
-        min-height: 0px;
-        padding: 30px 22px;
-    }
-
-    .banner-art {
-        display: none;
-    }
-
-    .banner h1 {
-        font-size: 32px;
-    }
-
-    .banner p {
-        font-size: 15px;
-    }
-
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .cat {
-        min-height: 110px;
-    }
-
-    .search {
-        gap: 7px;
-    }
-
-    .search input {
-        width: auto;
-    }
-
-    .promo {
-        padding: 23px 16px;
-    }
-}
-
-/* Nhãn "Bán chạy" nằm đè lên góc ảnh, không chiếm chỗ nên các thẻ luôn cao bằng nhau */
-.featured-products .card {
-    position: relative;
-}
-
-.featured-products .product-tag {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 1;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background-color: #f0b323;
-    color: #0b3c4f;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-/* Danh mục có thêm ô "Tất cả": 5 ô một hàng trên máy tính; máy nhỏ thì ô "Tất cả" chiếm cả hàng đầu */
-.categories-grid {
-    grid-template-columns: repeat(5, 1fr);
-}
-
-@media screen and (max-width: 980px) {
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .categories-grid .cat:first-child {
-        grid-column: 1 / -1;
-    }
+/* ===== Ảnh thật: danh mục + banner ===== */
+.dm img { width: 84px; height: 84px; object-fit: cover; border-radius: 12px; }
+.banner-hinh img { padding: 0; background: none; object-fit: cover; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+@media (max-width: 768px) {
+  .banner-hinh img { width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 12px; }
 }

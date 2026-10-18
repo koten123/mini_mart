@@ -1,38 +1,35 @@
-#timkiem {
-    display: block;
-    max-width: 640px;
-    margin: 0 auto 16px;
-}
+/* ===== products.css – Danh sách sản phẩm ===== */
+main.container { padding-top: 24px; padding-bottom: 12px; }
 
-.filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 10px 0px 22px;
-}
+.khu-sp { font-size: 0; }
 
-.filters .btn {
-    min-height: 38px;
-    padding: 8px 15px;
-    border: 1px solid #d4e6ea;
-    background-color: white;
-    color: #07576b;
-}
+/* Cột trái: danh mục */
+.cot-loc { display: inline-block; vertical-align: top; width: 220px; margin-right: 24px; padding: 16px; font-size: 16px; background: #fff; border: 1px solid var(--vien); border-radius: 12px; }
+.cot-loc h2 { font-size: 17px; color: var(--xanh-dam); margin-bottom: 10px; }
+.btn-loc { display: block; width: 100%; margin-bottom: 4px; padding: 9px 10px; border: none; border-radius: 8px; background: none; text-align: left; font-size: 15px; font-weight: 600; font-family: inherit; color: var(--chu); cursor: pointer; }
+.btn-loc:hover { background: var(--xanh-nhat); }
+.btn-loc.active { background: var(--xanh-dam); color: #fff; }
+.icon-loc { width: 24px; height: 24px; object-fit: cover; border-radius: 50%; vertical-align: middle; margin-right: 6px; }
 
-.filters .btn.active {
-    border-color: #08788a;
-    background-color: #07576b;
-    color: white;
-}
+/* Cột phải: banner + tìm kiếm + lưới */
+.cot-sp { display: inline-block; vertical-align: top; width: calc(100% - 244px); font-size: 16px; }
+.banner-km { padding: 22px 28px; margin-bottom: 16px; color: #fff; background: linear-gradient(120deg, var(--xanh-dam), var(--xanh)); border-radius: 12px; border-left: 8px solid var(--vang); }
+.banner-km h2 { font-size: 26px; }
 
-#khongthay {
-    display: none;
-    padding: 24px;
-    border: 1px dashed #dcebef;
-    border-radius: 14px;
-    background-color: white;
-    color: #5d7781;
-    text-align: center;
+.o-timkiem { display: block; width: 100%; margin-bottom: 16px; padding: 11px 18px; border: 1px solid var(--vien); border-radius: 24px; font-size: 15px; font-family: inherit; }
+.o-timkiem:focus { outline: 2px solid var(--xanh); border-color: var(--xanh); }
+
+.cot-sp .card { width: calc(33.333% - 18px); }
+.khong-thay { display: none; text-align: center; font-size: 18px; color: var(--chu-phu); padding: 40px 0; }
+.nut-them-gio { margin-top: 8px; }
+
+@media (max-width: 992px) {
+  .cot-sp .card { width: calc(50% - 18px); }
+}
+@media (max-width: 768px) {
+  .cot-loc { width: 100%; margin: 0 0 16px; }
+  .btn-loc { display: inline-block; width: auto; margin: 0 6px 6px 0; border: 1px solid var(--vien); border-radius: 20px; }
+  .btn-loc.active { border-color: var(--xanh-dam); }
+  .cot-sp { width: 100%; }
+  .cot-sp .card { width: calc(50% - 12px); }
 }
