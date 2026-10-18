@@ -1,6 +1,4 @@
-/* Trang chi tiết: hiển thị đúng sản phẩm theo ?id= trên URL; chỉ thêm giỏ khi đã đăng nhập. */
 
-// Dữ liệu 12 sản phẩm. Khóa trùng với ?id= trong products.html và index.html.
 const DANH_SACH_SAN_PHAM = {
   "sua-tuoi": {id: "sua-tuoi", name: "Sữa tươi 1L", price: 25000, image: "images/sua-tuoi-1l.png", category: "Sữa", description: "Sữa tươi tiệt trùng nguyên chất, không đường.", extra: "Dung tích 1 lít. Bảo quản nơi khô mát, sau khi mở nên để tủ lạnh và dùng trong 3 ngày."},
   "sua-chua-uong": {id: "sua-chua-uong", name: "Sữa chua uống", price: 8000, image: "images/sua-chua-uong.png", category: "Sữa", description: "Sữa chua uống vị tự nhiên, thơm mát, dễ tiêu hóa.", extra: "Chai 100ml. Bảo quản lạnh 2–6°C."},

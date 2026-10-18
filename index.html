@@ -1,80 +1,179 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ – MiniMart</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiniMart – Siêu thị mini tiện lợi</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-<header class="site-header">
-    <div class="header-main">
-        <a class="brand" href="index.html" aria-label="MiniMart - Trang chủ">
-            <img class="brand-mark" src="images/logo-mark.png" alt="">
-            <span class="brand-copy">
-                <strong><span>MINI</span><em>MART</em></strong>
-                <small>SIÊU THỊ CỦA BẠN</small>
-            </span>
-        </a>
-        <p class="site-slogan">Mua nhanh, đủ dùng mỗi ngày<span>Thực phẩm tươi ngon · Giá tốt mỗi ngày</span></p>
-        <button class="burger" type="button" onclick="doiMenu()" aria-label="Mở menu" aria-controls="menu">☰</button>
+
+  <!-- ===== HEADER (mẫu chung) ===== -->
+  <header class="header">
+    <div class="container top-bar">
+      <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn"></a>
+      <form class="o-tim-header" action="products.html">
+        <input type="text" name="q" placeholder="Tìm sản phẩm, thương hiệu, danh mục..." aria-label="Tìm sản phẩm">
+        <button type="submit">Tìm</button>
+      </form>
+      <div class="tk-gio">
+        <a href="dang-nhap.html">Đăng nhập</a>
+        <a href="dang-ky.html">Đăng ký</a>
+        <a href="cart.html">Giỏ hàng</a>
+      </div>
+      <button class="menu-btn" onclick="doiMenu()" aria-label="Mở menu">☰</button>
     </div>
-    <nav id="menu" aria-label="Điều hướng chính">
-        <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="products.html">Sản phẩm</a></li>
-            <li><a href="cart.html">Giỏ hàng</a></li>
-            <li><a href="member.html">Hội viên</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-<form class="search" action="products.html" method="get">
-    <input name="q" type="search" placeholder="Tìm sản phẩm..." aria-label="Tìm sản phẩm">
-    <button class="btn btn-green" type="submit">Tìm</button>
-</form>
-
-<section class="banner">
-    <div class="banner-copy">
-        <span class="eyebrow">TƯƠI NGON MỖI NGÀY</span>
-        <h1>Đi chợ thật dễ,<br><em>niềm vui thật gần.</em></h1>
-        <p>Thực phẩm và nhu yếu phẩm cho cả nhà, chọn nhanh trong vài phút.</p>
-        <a class="btn btn-gold" href="products.html">Khám phá sản phẩm <span aria-hidden="true">→</span></a>
+    <div class="thanh-nav">
+      <div class="container">
+        <nav id="menu" class="nav">
+          <a href="products.html" class="nav-dm">Danh mục sản phẩm</a>
+          <a href="index.html" class="active">Trang chủ</a>
+          <a href="products.html">Sản phẩm</a>
+          <a href="member.html">Hội viên &amp; Ưu đãi</a>
+          <a href="cart.html">Giỏ hàng</a>
+        </nav>
+      </div>
     </div>
-    <div class="banner-art" aria-hidden="true"><span class="art-spark">✦</span><span class="art-bag">🛒</span><span class="art-dot"></span></div>
-</section>
+  </header>
 
-<h2>Danh mục</h2>
-<section class="categories-grid">
-    <a class="cat" href="products.html?loai=tatca"><span>🛒</span>Tất cả</a>
-    <a class="cat" href="products.html?loai=sua"><span>🥛</span>Sữa</a>
-    <a class="cat" href="products.html?loai=banh"><span>🍪</span>Bánh</a>
-    <a class="cat" href="products.html?loai=nuoc"><span>🥤</span>Nước uống</a>
-    <a class="cat" href="products.html?loai=rau"><span>🥬</span>Rau củ quả</a>
-</section>
+  <main>
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+      <div class="container banner-inner">
+        <div class="banner-chu">
+          <h1>Thực phẩm sạch cho cuộc sống khỏe mạnh</h1>
+          <p>Hàng tươi mỗi ngày, giá hợp lý, giao tận nhà trong 30 phút. Đăng ký hội viên để nhận thêm nhiều ưu đãi.</p>
+          <a href="products.html" class="btn btn-vang">Mua sắm ngay</a>
+        </div>
+        <div class="banner-hinh">
+          <img src="images/products/rau-cai.jpg" alt="Rau cải">
+          <img src="images/products/sua-tuoi.jpg" alt="Sữa tươi">
+          <img src="images/products/ca-chua.jpg" alt="Cà chua">
+          <img src="images/products/nuoc-cam.jpg" alt="Nước cam">
+        </div>
+      </div>
+    </section>
 
-<h2>Sản phẩm nổi bật</h2>
-<section class="product-grid featured-products">
-    <article class="card"><div class="pic"><img src="images/sua-tuoi-1l.png" alt="Sữa tươi 1L" loading="lazy"></div><span class="product-tag">Bán chạy</span><b>Sữa tươi 1L</b><span class="price">25.000đ</span><a class="btn" href="product-detail.html?id=sua-tuoi">Xem chi tiết</a></article>
-    <article class="card"><div class="pic"><img src="images/banh-quy-bo.png" alt="Bánh quy bơ" loading="lazy"></div><b>Bánh quy bơ</b><span class="price">32.000đ</span><a class="btn" href="product-detail.html?id=banh-quy-bo">Xem chi tiết</a></article>
-    <article class="card"><div class="pic"><img src="images/nuoc-cam-ep.png" alt="Nước cam ép tươi" loading="lazy"></div><b>Nước cam ép</b><span class="price">18.000đ</span><a class="btn" href="product-detail.html?id=nuoc-cam-ep">Xem chi tiết</a></article>
-    <article class="card"><div class="pic"><img src="images/tao-do-1kg.png" alt="Táo đỏ tươi" loading="lazy"></div><b>Táo đỏ 1kg</b><span class="price">45.000đ</span><a class="btn" href="product-detail.html?id=tao-do-1kg">Xem chi tiết</a></article>
-</section>
+    <!-- ===== DANH MỤC ===== -->
+    <section>
+      <div class="container">
+        <h2 class="tieu-de">Danh mục sản phẩm</h2>
+        <div class="luoi-dm">
+          <a href="products.html" class="dm"><img src="images/products/sua-tuoi.jpg" alt="Sữa &amp; chế phẩm">Sữa &amp; chế phẩm</a>
+          <a href="products.html" class="dm"><img src="images/products/rau-cai.jpg" alt="Rau củ quả">Rau củ quả</a>
+          <a href="products.html" class="dm"><img src="images/products/thit-ba-chi.jpg" alt="Thịt &amp; trứng">Thịt &amp; trứng</a>
+          <a href="products.html" class="dm"><img src="images/products/banh-quy.jpg" alt="Bánh kẹo">Bánh kẹo</a>
+          <a href="products.html" class="dm"><img src="images/products/nuoc-cam.jpg" alt="Đồ uống">Đồ uống</a>
+          <a href="products.html" class="dm"><img src="images/products/nuoc-rua-chen.jpg" alt="Đồ gia dụng">Đồ gia dụng</a>
+        </div>
+      </div>
+    </section>
 
-<section class="promo">
-    <span class="eyebrow">DÀNH RIÊNG CHO BẠN</span>
-    <h2>Giảm 10% đơn đầu tiên</h2>
-    <p>Đăng ký hội viên để nhận ưu đãi và tích điểm.</p>
-    <p><a class="btn btn-green" href="member.html">Đăng ký hội viên</a></p>
-</section>
-</main>
-<footer>
-    &copy; Copyright 2026 - MiniMart · Hotline: 1900 0000
-</footer>
-<script src="js/home.js"></script>
+    <!-- ===== SẢN PHẨM NỔI BẬT ===== -->
+    <section>
+      <div class="container">
+        <h2 class="tieu-de">Sản phẩm nổi bật</h2>
+        <div class="luoi-sp">
+          <div class="card">
+            <div class="card-anh"><img src="images/products/sua-tuoi.jpg" alt="Sữa tươi nguyên chất 1L"></div>
+            <div class="card-noidung">
+              <div class="card-ten">Sữa tươi nguyên chất 1L</div>
+              <div class="card-gia">32.000đ</div>
+              <a href="product-detail.html" class="btn">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-anh"><img src="images/products/ca-chua.jpg" alt="Cà chua tươi 500g"></div>
+            <div class="card-noidung">
+              <div class="card-ten">Cà chua tươi 500g</div>
+              <div class="card-gia">20.000đ</div>
+              <a href="product-detail.html" class="btn">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-anh"><img src="images/products/trung-ga.jpg" alt="Trứng gà sạch (hộp 10 quả)"></div>
+            <div class="card-noidung">
+              <div class="card-ten">Trứng gà sạch (hộp 10 quả)</div>
+              <div class="card-gia">35.000đ</div>
+              <a href="product-detail.html" class="btn">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-anh"><img src="images/products/banh-quy.jpg" alt="Bánh quy bơ giòn tan"></div>
+            <div class="card-noidung">
+              <div class="card-ten">Bánh quy bơ giòn tan</div>
+              <div class="card-gia">25.000đ</div>
+              <a href="product-detail.html" class="btn">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+        <p class="xem-them"><a href="products.html" class="btn btn-vien">Xem tất cả sản phẩm →</a></p>
+      </div>
+    </section>
+
+    <!-- ===== KHUYẾN MÃI ===== -->
+    <section>
+      <div class="container">
+        <h2 class="tieu-de">Khuyến mãi hôm nay</h2>
+        <div class="luoi-km">
+          <div class="km km-1">
+            <h3>Giảm 20%</h3>
+            <p>Rau củ quả tươi mỗi sáng thứ Bảy</p>
+          </div>
+          <div class="km km-2">
+            <h3>Mua 2 tặng 1</h3>
+            <p>Sữa chua uống men sống</p>
+          </div>
+          <div class="km km-3">
+            <h3>Freeship</h3>
+            <p>Đơn từ 199.000đ trong bán kính 3km</p>
+            <a href="member.html">Xem ưu đãi hội viên →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ĐẶC QUYỀN HỘI VIÊN ===== -->
+    <section>
+      <div class="container">
+        <div class="dac-quyen">
+          <div class="dq-chu">
+            <h2>Đặc quyền hội viên</h2>
+            <p>Tích điểm mỗi lần mua sắm, nhận ưu đãi riêng và miễn phí giao hàng khi lên hạng Vàng.</p>
+            <a href="member.html" class="btn btn-vang">Tham gia ngay</a>
+          </div>
+          <div class="dq-hinh"><img src="images/logo-mark.png" alt="MiniMart"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (mẫu chung) ===== -->
+  <footer class="footer">
+    <div class="container footer-luoi">
+      <div>
+        <img class="logo-ft" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn">
+        <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
+        <p>Địa chỉ: Đại học Giao Thông Vận Tải  &nbsp;|&nbsp; Hotline: 1900 </p>
+      </div>
+      <div>
+        <h4>Điều hướng</h4>
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <a href="member.html">Hội viên &amp; Ưu đãi</a>
+      </div>
+      <div>
+        <h4>Hỗ trợ</h4>
+        <a href="#">Giờ mở cửa: 7:00 – 22:00</a>
+        <a href="#">Phí giao hàng: 15.000đ</a>
+      </div>
+    </div>
+    <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
+  </footer>
+
+  <script src="js/home.js"></script>
 </body>
 </html>
