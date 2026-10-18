@@ -12,29 +12,18 @@
 
   <!-- ===== HEADER (mẫu chung) ===== -->
   <header class="header">
-    <div class="container top-bar">
-      <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn"></a>
-      <form class="o-tim-header" action="products.html">
-        <input type="text" name="q" placeholder="Tìm sản phẩm, thương hiệu, danh mục..." aria-label="Tìm sản phẩm">
-        <button type="submit">Tìm</button>
-      </form>
-      <div class="tk-gio">
-        <a href="dang-nhap.html">Đăng nhập</a>
-        <a href="dang-ky.html">Đăng ký</a>
-        <a href="cart.html">Giỏ hàng</a>
-      </div>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🛒 Mini<span>Mart</span></a>
       <button class="menu-btn" onclick="doiMenu()" aria-label="Mở menu">☰</button>
-    </div>
-    <div class="thanh-nav">
-      <div class="container">
-        <nav id="menu" class="nav">
-          <a href="products.html" class="nav-dm">Danh mục sản phẩm</a>
-          <a href="index.html">Trang chủ</a>
-          <a href="products.html">Sản phẩm</a>
-          <a href="member.html" class="active">Hội viên &amp; Ưu đãi</a>
-          <a href="cart.html">Giỏ hàng</a>
-        </nav>
-      </div>
+      <nav id="menu" class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="member.html" class="active">Hội viên &amp; Ưu đãi</a>
+        <a href="cart.html">🧺 Giỏ hàng</a>
+        <a href="login.html" id="navDangNhap">Đăng nhập</a>
+        <a href="register.html" class="nav-btn" id="navDangKy">Đăng ký</a>
+        <a href="#" class="nav-out" id="navDangXuat" style="display: none;" onclick="dangXuat(); return false;">Đăng xuất</a>
+      </nav>
     </div>
   </header>
 
@@ -45,8 +34,6 @@
       <section class="gioi-thieu">
         <h1>Trở thành hội viên MiniMart</h1>
         <p>Tích điểm mỗi lần mua sắm, đổi quà và nhận ưu đãi dành riêng cho hội viên.</p>
-        <a href="dang-ky.html" class="btn btn-vang">Đăng ký ngay</a>
-        <a href="dang-nhap.html" class="btn btn-vien">Đăng nhập</a>
       </section>
 
       <h2 class="tieu-de">Quyền lợi hội viên</h2>
@@ -56,11 +43,13 @@
         <div class="the-quyen"><div class="bieu-tuong">🚚</div><h3>Miễn phí giao hàng</h3><p>Hội viên Vàng trở lên được miễn phí giao hàng mọi đơn.</p></div>
       </div>
 
-      <h2 class="tieu-de">Hạng thẻ hội viên</h2>
-      <div class="luoi-3">
-        <div class="the-hang"><h3>Thành viên</h3><p>Mới đăng ký. Mỗi 10.000đ mua hàng tích 1 điểm.</p></div>
-        <div class="the-hang bac"><h3>Bạc</h3><p>Từ 1.000 điểm. Ưu đãi riêng cho hội viên và voucher sinh nhật.</p></div>
-        <div class="the-hang vang"><h3>Vàng</h3><p>Từ 2.000 điểm, miễn phí giao hàng mọi đơn.</p></div>
+      <div class="cta-dang-nhap">
+        <h2>Bạn chưa đăng nhập</h2>
+        <p>Đăng nhập bằng số điện thoại để xem điểm tích lũy, hạng thẻ và ưu đãi riêng cho bạn.</p>
+        <div class="cta-nut">
+          <a href="login.html" class="btn">Đăng nhập</a>
+          <a href="register.html" class="btn btn-cam">Đăng ký hội viên</a>
+        </div>
       </div>
     </div>
 
@@ -68,16 +57,16 @@
     <div id="khuHoiVien" style="display: none;">
       <section class="chao-hoi-vien">
         <div>
-          <h1>Xin chào, <span id="tenHV"></span></h1>
-          <p>Email: <span id="emailHV"></span></p>
+          <h1>Xin chào, <span id="hoTen"></span> 👋</h1>
+          <p>Số điện thoại: <span id="sdtHienThi"></span></p>
         </div>
         <button class="btn btn-vien" onclick="dangXuat()">Đăng xuất</button>
       </section>
 
       <div class="luoi-3">
-        <div class="o-so"><span class="nhan-o">Điểm hiện có</span><span class="so-lon" id="diemHV">0</span><span class="phu">điểm</span></div>
-        <div class="o-so"><span class="nhan-o">Hạng thẻ</span><span class="badge badge-tv" id="hangHV">Thành viên</span><span class="phu" id="hangPhu"></span></div>
-        <div class="o-so"><span class="nhan-o">Thành viên từ</span><span class="so-lon nho" id="tuHV"></span><span class="phu" id="soDonHV"></span></div>
+        <div class="o-so"><span class="nhan-o">Điểm hiện có</span><span class="so-lon" id="diemHienCo">0</span><span class="phu">điểm</span></div>
+        <div class="o-so"><span class="nhan-o">Hạng thẻ</span><span class="badge badge-dong" id="hangThe">🥉 Đồng</span><span class="phu" id="hangPhu"></span></div>
+        <div class="o-so"><span class="nhan-o">Thành viên từ</span><span class="so-lon nho" id="thangVien"></span><span class="phu" id="soDon"></span></div>
       </div>
 
       <h2 class="tieu-de">Ưu đãi riêng cho bạn</h2>
@@ -93,7 +82,9 @@
           <thead>
             <tr><th>Mã đơn</th><th>Ngày mua</th><th>Số món</th><th>Tổng tiền</th><th>Điểm tích</th></tr>
           </thead>
-          <tbody id="thanLichSu"></tbody>
+          <tbody id="thanLichSu">
+            <!-- Các dòng đơn hàng được JavaScript tạo theo tài khoản đang đăng nhập -->
+          </tbody>
         </table>
       </div>
     </div>
@@ -113,9 +104,9 @@
   <footer class="footer">
     <div class="container footer-luoi">
       <div>
-        <img class="logo-ft" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn">
+        <h4>🛒 MiniMart</h4>
         <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
-        <p>Địa chỉ: Đại học Giao Thông Vận Tải &nbsp;|&nbsp; Hotline: 1900</p>
+        <p>📍 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; ☎ 0900 000 000</p>
       </div>
       <div>
         <h4>Điều hướng</h4>
@@ -132,6 +123,8 @@
     </div>
     <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
   </footer>
+
+  <script src="js/auth.js"></script>
 
   <script src="js/member.js"></script>
 </body>

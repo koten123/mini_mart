@@ -12,29 +12,18 @@
 
   <!-- ===== HEADER (mẫu chung) ===== -->
   <header class="header">
-    <div class="container top-bar">
-      <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn"></a>
-      <form class="o-tim-header" action="products.html">
-        <input type="text" name="q" placeholder="Tìm sản phẩm, thương hiệu, danh mục..." aria-label="Tìm sản phẩm">
-        <button type="submit">Tìm</button>
-      </form>
-      <div class="tk-gio">
-        <a href="dang-nhap.html">Đăng nhập</a>
-        <a href="dang-ky.html">Đăng ký</a>
-        <a href="cart.html">Giỏ hàng</a>
-      </div>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🛒 Mini<span>Mart</span></a>
       <button class="menu-btn" onclick="doiMenu()" aria-label="Mở menu">☰</button>
-    </div>
-    <div class="thanh-nav">
-      <div class="container">
-        <nav id="menu" class="nav">
-          <a href="products.html" class="nav-dm">Danh mục sản phẩm</a>
-          <a href="index.html">Trang chủ</a>
-          <a href="products.html">Sản phẩm</a>
-          <a href="member.html">Hội viên &amp; Ưu đãi</a>
-          <a href="cart.html" class="active">Giỏ hàng</a>
-        </nav>
-      </div>
+      <nav id="menu" class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="member.html">Hội viên &amp; Ưu đãi</a>
+        <a href="cart.html" class="active">🧺 Giỏ hàng</a>
+        <a href="login.html" id="navDangNhap">Đăng nhập</a>
+        <a href="register.html" class="nav-btn" id="navDangKy">Đăng ký</a>
+        <a href="#" class="nav-out" id="navDangXuat" style="display: none;" onclick="dangXuat(); return false;">Đăng xuất</a>
+      </nav>
     </div>
   </header>
 
@@ -43,16 +32,17 @@
 
     <!-- ===== GIỎ TRỐNG ===== -->
     <div id="gioTrong" class="gio-trong">
-      <div class="icon"><img src="images/logo-mark.png" alt=""></div>
+      <div class="icon">🧺</div>
       <p>Giỏ hàng của bạn đang trống</p>
       <a href="products.html" class="btn">Tiếp tục mua sắm</a>
     </div>
 
     <!-- ===== ĐẶT HÀNG XONG ===== -->
     <div id="datXong" class="gio-trong">
-      <div class="icon"><img src="images/logo-mark.png" alt=""></div>
+      <div class="icon">🎉</div>
       <p id="loiCamOn"></p>
       <a href="products.html" class="btn">Tiếp tục mua sắm</a>
+      <a href="member.html" id="linkLichSu" class="btn btn-vien" style="display: none;">Xem lịch sử mua hàng</a>
     </div>
 
     <!-- ===== NỘI DUNG GIỎ ===== -->
@@ -102,7 +92,7 @@
         <div class="dong-tien"><span>Tạm tính</span><span id="tamTinh">0đ</span></div>
         <div class="dong-tien"><span>Phí giao hàng</span><span id="phiGiao">15.000đ</span></div>
         <div class="dong-tien tong"><span>Tổng cộng</span><span id="tongTien">0đ</span></div>
-        <button class="btn btn-vang nut-dat" onclick="datHang()">Đặt hàng</button>
+        <button class="btn btn-cam nut-dat" onclick="datHang()">Đặt hàng</button>
         <div id="thanhCong" class="thanh-cong"></div>
         <a href="products.html" class="tiep-tuc">← Tiếp tục mua sắm</a>
       </aside>
@@ -113,9 +103,9 @@
   <footer class="footer">
     <div class="container footer-luoi">
       <div>
-        <img class="logo-ft" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn">
+        <h4>🛒 MiniMart</h4>
         <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
-        <p>Địa chỉ: 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; Hotline: 0900 000 000</p>
+        <p>📍 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; ☎ 0900 000 000</p>
       </div>
       <div>
         <h4>Điều hướng</h4>
@@ -132,6 +122,8 @@
     </div>
     <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
   </footer>
+
+  <script src="js/auth.js"></script>
 
   <script src="js/cart.js"></script>
 </body>

@@ -12,29 +12,18 @@
 
   <!-- ===== HEADER (mẫu chung) ===== -->
   <header class="header">
-    <div class="container top-bar">
-      <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn"></a>
-      <form class="o-tim-header" action="products.html">
-        <input type="text" name="q" placeholder="Tìm sản phẩm, thương hiệu, danh mục..." aria-label="Tìm sản phẩm">
-        <button type="submit">Tìm</button>
-      </form>
-      <div class="tk-gio">
-        <a href="dang-nhap.html">Đăng nhập</a>
-        <a href="dang-ky.html">Đăng ký</a>
-        <a href="cart.html">Giỏ hàng</a>
-      </div>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🛒 Mini<span>Mart</span></a>
       <button class="menu-btn" onclick="doiMenu()" aria-label="Mở menu">☰</button>
-    </div>
-    <div class="thanh-nav">
-      <div class="container">
-        <nav id="menu" class="nav">
-          <a href="products.html" class="nav-dm">Danh mục sản phẩm</a>
-          <a href="index.html" class="active">Trang chủ</a>
-          <a href="products.html">Sản phẩm</a>
-          <a href="member.html">Hội viên &amp; Ưu đãi</a>
-          <a href="cart.html">Giỏ hàng</a>
-        </nav>
-      </div>
+      <nav id="menu" class="nav">
+        <a href="index.html" class="active">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="member.html">Hội viên &amp; Ưu đãi</a>
+        <a href="cart.html">🧺 Giỏ hàng</a>
+        <a href="login.html" id="navDangNhap">Đăng nhập</a>
+        <a href="register.html" class="nav-btn" id="navDangKy">Đăng ký</a>
+        <a href="#" class="nav-out" id="navDangXuat" style="display: none;" onclick="dangXuat(); return false;">Đăng xuất</a>
+      </nav>
     </div>
   </header>
 
@@ -43,9 +32,13 @@
     <section class="banner">
       <div class="container banner-inner">
         <div class="banner-chu">
-          <h1>Thực phẩm sạch cho cuộc sống khỏe mạnh</h1>
-          <p>Hàng tươi mỗi ngày, giá hợp lý, giao tận nhà trong 30 phút. Đăng ký hội viên để nhận thêm nhiều ưu đãi.</p>
-          <a href="products.html" class="btn btn-vang">Mua sắm ngay</a>
+          <h1>Mua sắm nhanh, giao tận nhà trong 30 phút</h1>
+          <p>Hàng tươi mỗi ngày, giá hợp lý cho cả gia đình. Đăng ký hội viên để nhận thêm nhiều ưu đãi.</p>
+          <form class="o-tim" action="products.html">
+            <input type="text" placeholder="Bạn muốn tìm gì hôm nay?" aria-label="Tìm sản phẩm">
+            <button type="submit" class="btn btn-cam">Tìm kiếm</button>
+          </form>
+          <a href="products.html" class="btn btn-vien">Mua sắm ngay</a>
         </div>
         <div class="banner-hinh">
           <img src="images/products/rau-cai.jpg" alt="Rau cải">
@@ -98,10 +91,10 @@
               <div class="card-ten">Trứng gà sạch (hộp 10 quả)</div>
               <div class="card-gia">35.000đ</div>
               <a href="product-detail.html" class="btn">Xem chi tiết</a>
-            </div> 
+            </div>
           </div>
           <div class="card">
-            <div class="card-anh"><img src="images/banh-quy-bo.png" alt="Bánh quy bơ giòn tan"></div>
+            <div class="card-anh"><img src="images/products/banh-quy.jpg" alt="Bánh quy bơ giòn tan"></div>
             <div class="card-noidung">
               <div class="card-ten">Bánh quy bơ giòn tan</div>
               <div class="card-gia">25.000đ</div>
@@ -134,29 +127,15 @@
         </div>
       </div>
     </section>
-
-    <!-- ===== ĐẶC QUYỀN HỘI VIÊN ===== -->
-    <section>
-      <div class="container">
-        <div class="dac-quyen">
-          <div class="dq-chu">
-            <h2>Đặc quyền hội viên</h2>
-            <p>Tích điểm mỗi lần mua sắm, nhận ưu đãi riêng và miễn phí giao hàng khi lên hạng Vàng.</p>
-            <a href="member.html" class="btn btn-vang">Tham gia ngay</a>
-          </div>
-          <div class="dq-hinh"><img src="images/logo-mark.png" alt="MiniMart"></div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- ===== FOOTER (mẫu chung) ===== -->
   <footer class="footer">
     <div class="container footer-luoi">
       <div>
-        <img class="logo-ft" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn">
+        <h4>🛒 MiniMart</h4>
         <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
-        <p>Địa chỉ: Đại học Giao Thông Vận Tải  &nbsp;|&nbsp; Hotline: 1900 </p>
+        <p>📍 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; ☎ 0900 000 000</p>
       </div>
       <div>
         <h4>Điều hướng</h4>
@@ -173,6 +152,8 @@
     </div>
     <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
   </footer>
+
+  <script src="js/auth.js"></script>
 
   <script src="js/home.js"></script>
 </body>

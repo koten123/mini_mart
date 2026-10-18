@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập – MiniMart</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+  <!-- ===== HEADER (mẫu chung) ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🛒 Mini<span>Mart</span></a>
+      <button class="menu-btn" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+      <nav id="menu" class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="member.html">Hội viên &amp; Ưu đãi</a>
+        <a href="cart.html">🧺 Giỏ hàng</a>
+        <a href="login.html" class="active" id="navDangNhap">Đăng nhập</a>
+        <a href="register.html" class="nav-btn" id="navDangKy">Đăng ký</a>
+        <a href="#" class="nav-out" id="navDangXuat" style="display: none;" onclick="dangXuat(); return false;">Đăng xuất</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-icon">👤</div>
+      <h1>Đăng nhập</h1>
+      <p class="auth-phu">Đăng nhập bằng số điện thoại để xem điểm và ưu đãi hội viên.</p>
+
+      <form onsubmit="dangNhap(); return false;" novalidate>
+        <div class="nhom-form">
+          <label for="dnSdt">Số điện thoại</label>
+          <input type="tel" id="dnSdt" placeholder="Ví dụ: 0912345678" maxlength="10" autocomplete="tel">
+          <span class="loi" id="loiDnSdt"></span>
+        </div>
+        <div class="nhom-form">
+          <label for="dnMatKhau">Mật khẩu</label>
+          <input type="password" id="dnMatKhau" placeholder="Nhập mật khẩu" autocomplete="current-password">
+          <span class="loi" id="loiDnMatKhau"></span>
+        </div>
+        <span class="loi loi-chung" id="loiChung"></span>
+        <button type="submit" class="btn nut-full">Đăng nhập</button>
+      </form>
+
+      <p class="chuyen-trang">Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+      <p class="goi-y">Tài khoản thử nghiệm: SĐT <b>0912345678</b> – mật khẩu <b>123456</b></p>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER (mẫu chung) ===== -->
+  <footer class="footer">
+    <div class="container footer-luoi">
+      <div>
+        <h4>🛒 MiniMart</h4>
+        <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
+        <p>📍 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; ☎ 0900 000 000</p>
+      </div>
+      <div>
+        <h4>Điều hướng</h4>
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <a href="member.html">Hội viên &amp; Ưu đãi</a>
+      </div>
+      <div>
+        <h4>Hỗ trợ</h4>
+        <a href="#">Giờ mở cửa: 7:00 – 22:00</a>
+        <a href="#">Phí giao hàng: 15.000đ</a>
+      </div>
+    </div>
+    <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
