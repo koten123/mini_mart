@@ -1,10 +1,10 @@
+// ===== home.js – TV1: Trang chủ =====
+// Bấm nút ☰ để mở/đóng menu trên điện thoại
 function doiMenu() {
-    var menu = document.getElementById("menu");
-    var nut = document.querySelector(".burger");
-    var dangMo = menu.classList.toggle("open");
-    if (nut) nut.setAttribute("aria-expanded", dangMo ? "true" : "false");
+  var menu = document.getElementById("menu");
+  if (menu.className === "nav") {
+    menu.className = "nav open";
+  } else {
+    menu.className = "nav";
+  }
 }
-
-// Đã đăng nhập hội viên thì không cần mời đăng ký nữa (khóa do member.js ghi).
-var khoiMoiDangKy = document.querySelector(".promo");
-if (khoiMoiDangKy && localStorage.getItem("minimart_user")) khoiMoiDangKy.style.display = "none";

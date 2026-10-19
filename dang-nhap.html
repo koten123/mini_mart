@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập – MiniMart</title>
+  <link rel="icon" href="images/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/member.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container top-bar">
+      <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn"></a>
+      <form class="o-tim-header" action="products.html">
+        <input type="text" name="q" placeholder="Tìm sản phẩm, thương hiệu, danh mục..." aria-label="Tìm sản phẩm">
+        <button type="submit">Tìm</button>
+      </form>
+      <div class="tk-gio">
+        <a href="dang-nhap.html">Đăng nhập</a>
+        <a href="dang-ky.html">Đăng ký</a>
+        <a href="cart.html">Giỏ hàng</a>
+      </div>
+      <button class="menu-btn" onclick="doiMenu()" aria-label="Mở menu">☰</button>
+    </div>
+    <div class="thanh-nav">
+      <div class="container">
+        <nav id="menu" class="nav">
+          <a href="products.html" class="nav-dm">Danh mục sản phẩm</a>
+          <a href="index.html">Trang chủ</a>
+          <a href="products.html">Sản phẩm</a>
+          <a href="member.html" class="active">Hội viên &amp; Ưu đãi</a>
+          <a href="cart.html">Giỏ hàng</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <form class="khung hop-form" onsubmit="return false;">
+          <h3>Đăng nhập</h3>
+          <div class="nhom-form">
+            <label for="dnEmail">Email</label>
+            <input type="text" id="dnEmail" placeholder="ten@email.com">
+            <span class="loi" id="loiDnEmail"></span>
+          </div>
+          <div class="nhom-form">
+            <label for="dnMatKhau">Mật khẩu</label>
+            <input type="password" id="dnMatKhau" placeholder="Nhập mật khẩu">
+            <span class="loi" id="loiDnMatKhau"></span>
+          </div>
+          <button type="button" class="btn" onclick="dangNhap()">Đăng nhập</button>
+          <p class="goi-y">Bản mô phỏng: nhập email có dấu @ và mật khẩu bất kỳ để xem khu hội viên.</p>
+          <p class="goi-y">Chưa có tài khoản? <a href="dang-ky.html">Đăng ký</a></p>
+        </form>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-luoi">
+      <div>
+        <img class="logo-ft" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn">
+        <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
+        <p>Địa chỉ: 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; Hotline: 0900 000 000</p>
+      </div>
+      <div>
+        <h4>Điều hướng</h4>
+        <a href="index.html">Trang chủ</a>
+        <a href="products.html">Sản phẩm</a>
+        <a href="cart.html">Giỏ hàng</a>
+        <a href="member.html">Hội viên &amp; Ưu đãi</a>
+      </div>
+      <div>
+        <h4>Hỗ trợ</h4>
+        <a href="#">Giờ mở cửa: 7:00 – 22:00</a>
+        <a href="#">Phí giao hàng: 15.000đ</a>
+      </div>
+    </div>
+    <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
+  </footer>
+
+  <script src="js/member.js"></script>
+</body>
+</html>
