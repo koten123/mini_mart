@@ -41,9 +41,9 @@
     <form class="khung hop-form" onsubmit="return false;">
           <h3>Đăng nhập</h3>
           <div class="nhom-form">
-            <label for="dnEmail">Email</label>
-            <input type="text" id="dnEmail" placeholder="ten@email.com">
-            <span class="loi" id="loiDnEmail"></span>
+            <label for="dnSdt">Số điện thoại</label>
+            <input type="text" id="dnSdt" placeholder="0912345678" maxlength="10" inputmode="numeric">
+            <span class="loi" id="loiDnSdt"></span>
           </div>
           <div class="nhom-form">
             <label for="dnMatKhau">Mật khẩu</label>
@@ -51,7 +51,7 @@
             <span class="loi" id="loiDnMatKhau"></span>
           </div>
           <button type="button" class="btn" onclick="dangNhap()">Đăng nhập</button>
-          <p class="goi-y">Bản mô phỏng: nhập email có dấu @ và mật khẩu bất kỳ để xem khu hội viên.</p>
+          <p class="goi-y">Bản mô phỏng: nhập số điện thoại 10 chữ số và mật khẩu bất kỳ để xem khu hội viên.</p>
           <p class="goi-y">Chưa có tài khoản? <a href="dang-ky.html">Đăng ký</a></p>
         </form>
   </main>
@@ -61,7 +61,7 @@
       <div>
         <img class="logo-ft" src="images/logo-mark.png" alt="MiniMart – Siêu thị của bạn">
         <p>Siêu thị mini tiện lợi – hàng tươi mỗi ngày, giao nhanh tận nhà.</p>
-        <p>Địa chỉ: 123 Đường Mẫu, Quận 1 &nbsp;|&nbsp; Hotline: 0900 000 000</p>
+        <p>Địa chỉ: Đại học Giao Thông Vận Tải &nbsp;|&nbsp; Hotline: 1900</p>
       </div>
       <div>
         <h4>Điều hướng</h4>
@@ -79,6 +79,7 @@
     <div class="ban-quyen">© 2026 MiniMart – Bài tập lớn Thiết kế Web</div>
   </footer>
 
+  <script src="js/header.js"></script>
   <script src="js/member.js"></script>
 </body>
 </html>

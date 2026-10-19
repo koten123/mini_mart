@@ -1,57 +1,107 @@
-// ===== detail.js – TV3: Chi tiết sản phẩm =====
+// js/detail.js
 
-// Bấm nút ☰ để mở/đóng menu trên điện thoại
-function doiMenu() {
-  var menu = document.getElementById("menu");
-  if (menu.className === "nav") {
-    menu.className = "nav open";
-  } else {
-    menu.className = "nav";
+let soLuongHienTai = 1;
+let sanPhamHienTai = null;
+
+document.addEventListener("DOMContentLoaded", function() {
+  // 1. Lấy parameter id từ URL (ví dụ: product-detail.html?id=ca-chua)
+  const urlParams = new URLSearchParams(window.location.search);
+  const idSP = urlParams.get("id");
+
+  // Tìm sản phẩm trong danhSachSanPham (đã được nạp từ data.js)
+  if (typeof danhSachSanPham !== "undefined" && idSP) {
+    sanPhamHienTai = danhSachSanPham.find(sp => sp.id === idSP);
   }
-}
 
-// Tăng/giảm số lượng (từ 1 đến 10)
-function doiSL(n) {
-  var so = Number(document.getElementById("sl").innerText);
-  so = so + n;
-  if (so < 1) { so = 1; }
-  if (so > 10) { so = 10; }
-  document.getElementById("sl").innerText = so;
-}
+  // Nếu không tìm thấy, mặc định lấy sản phẩm đầu tiên (Sữa tươi)
+  if (!sanPhamHienTai && typeof danhSachSanPham !== "undefined") {
+    sanPhamHienTai = danhSachSanPham[0];
+  }
 
-// Thông tin sản phẩm của trang này
-var SAN_PHAM = { ten: "Sữa tươi nguyên chất 1L", gia: 32000, hinh: "images/products/sua-tuoi.jpg" };
+  // 2. Render dữ liệu ra giao diện trang product-detail.html
+  if (sanPhamHienTai) {
+    document.title = sanPhamHienTai.ten + " – MiniMart";
 
-// Bấm "Thêm vào giỏ" -> lưu vào giỏ hàng rồi hiện thông báo 2 giây
-function themGio() {
-  var so = Number(document.getElementById("sl").innerText);
+    // Cập nhật đường dẫn Breadcrumb
+    const duongDan = document.querySelector(".duong-dan");
+    if (duongDan) {
+      duongDan.innerHTML = `<a href="index.html">Trang chủ</a> › <a href="products.html">Sản phẩm</a> › ${sanPhamHienTai.ten}`;
+    }
 
-  // Đọc giỏ hiện có
-  var gio = [];
-  try { gio = JSON.parse(localStorage.getItem("gioHang")) || []; } catch (e) {}
+    // Cập nhật ảnh
+    const anhLon = document.getElementById("anhLon");
+    if (anhLon) {
+      anhLon.src = sanPhamHienTai.anh;
+      anhLon.alt = sanPhamHienTai.ten;
+    }
 
-  // Đã có sản phẩm này thì cộng thêm số lượng, chưa có thì thêm mới
-  var daCo = false;
-  for (var i = 0; i < gio.length; i++) {
-    if (gio[i].ten === SAN_PHAM.ten) {
-      gio[i].sl = Math.min(gio[i].sl + so, 10);
-      daCo = true;
+    // Cập nhật tên, giá, mô tả
+    const tenEl = document.querySelector(".cot-tin h1");
+    if (tenEl) tenEl.innerText = sanPhamHienTai.ten;
+
+    const giaEl = document.querySelector(".cot-tin .gia");
+    if (giaEl) giaEl.innerText = sanPhamHienTai.gia;
+
+    const moTaEl = document.querySelector(".cot-tin .mo-ta-ngan");
+    if (moTaEl) moTaEl.innerText = sanPhamHienTai.moTa;
+
+    // Cập nhật đoạn mô tả dài
+    const moTaKhoi = document.querySelector(".khoi-mo-ta p");
+    if (moTaKhoi) moTaKhoi.innerText = sanPhamHienTai.moTa;
+
+    // Cập nhật Bảng thông tin thêm
+    const bangTin = document.querySelector(".bang-tin");
+    if (bangTin) {
+      bangTin.innerHTML = `
+        <tr><td>Thương hiệu</td><td>${sanPhamHienTai.thuongHieu || 'MiniMart'}</td></tr>
+        <tr><td>Quy cách / Dung tích</td><td>${sanPhamHienTai.dungTich || 'Tiêu chuẩn'}</td></tr>
+        <tr><td>Hạn sử dụng</td><td>${sanPhamHienTai.hanSuDung || 'Xem trên bao bì'}</td></tr>
+        <tr><td>Bảo quản</td><td>${sanPhamHienTai.baoQuan || 'Khô ráo, thoáng mát'}</td></tr>
+        <tr><td>Xuất xứ</td><td>${sanPhamHienTai.xuatXu || 'Việt Nam'}</td></tr>
+      `;
     }
   }
-  if (!daCo) {
-    gio.push({ ten: SAN_PHAM.ten, gia: SAN_PHAM.gia, hinh: SAN_PHAM.hinh, sl: so });
-  }
-  try { localStorage.setItem("gioHang", JSON.stringify(gio)); } catch (e) {}
+});
 
-  var tb = document.getElementById("thongbao");
-  tb.innerText = "✔ Đã thêm " + so + " sản phẩm vào giỏ hàng";
-  tb.style.display = "block";
-  setTimeout(function () {
-    tb.style.display = "none";
-  }, 2000);
+// Hàm tăng/giảm số lượng ở trang chi tiết
+function doiSL(delta) {
+  soLuongHienTai += delta;
+  if (soLuongHienTai < 1) soLuongHienTai = 1;
+  if (soLuongHienTai > 10) soLuongHienTai = 10;
+  
+  const slEl = document.getElementById("sl");
+  if (slEl) slEl.innerText = soLuongHienTai;
 }
 
-// Mở rộng: bấm ảnh nhỏ để đổi ảnh lớn
-function doiAnh(hinh) {
-  document.getElementById("anhLon").src = hinh;
+// Hàm thêm vào giỏ hàng từ trang chi tiết
+function themGio() {
+  if (!sanPhamHienTai) return;
+
+  let gioHang = JSON.parse(localStorage.getItem("gioHang")) || [];
+  let item = gioHang.find(i => i.id === sanPhamHienTai.id);
+
+  if (item) {
+    item.soLuong += soLuongHienTai;
+  } else {
+    gioHang.push({
+      id: sanPhamHienTai.id,
+      ten: sanPhamHienTai.ten,
+      gia: sanPhamHienTai.giaSo,
+      giaText: sanPhamHienTai.gia,
+      anh: sanPhamHienTai.anh,
+      soLuong: soLuongHienTai
+    });
+  }
+
+  localStorage.setItem("gioHang", JSON.stringify(gioHang));
+
+  // Hiện toast thông báo
+  const thongBao = document.getElementById("thongbao");
+  if (thongBao) {
+    thongBao.innerText = `Đã thêm ${soLuongHienTai} x "${sanPhamHienTai.ten}" vào giỏ hàng!`;
+    thongBao.classList.add("hien");
+    setTimeout(() => {
+      thongBao.classList.remove("hien");
+    }, 2500);
+  }
 }
