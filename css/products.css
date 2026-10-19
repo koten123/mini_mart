@@ -1,9 +1,9 @@
-/* ===== products.css – Danh sách sản phẩm ===== */
+
 main.container { padding-top: 24px; padding-bottom: 12px; }
 
 .khu-sp { font-size: 0; }
 
-/* Cột trái: danh mục */
+
 .cot-loc { display: inline-block; vertical-align: top; width: 220px; margin-right: 24px; padding: 16px; font-size: 16px; background: #fff; border: 1px solid var(--vien); border-radius: 12px; }
 .cot-loc h2 { font-size: 17px; color: var(--xanh-dam); margin-bottom: 10px; }
 .btn-loc { display: block; width: 100%; margin-bottom: 4px; padding: 9px 10px; border: none; border-radius: 8px; background: none; text-align: left; font-size: 15px; font-weight: 600; font-family: inherit; color: var(--chu); cursor: pointer; }
@@ -11,7 +11,7 @@ main.container { padding-top: 24px; padding-bottom: 12px; }
 .btn-loc.active { background: var(--xanh-dam); color: #fff; }
 .icon-loc { width: 24px; height: 24px; object-fit: cover; border-radius: 50%; vertical-align: middle; margin-right: 6px; }
 
-/* Cột phải: banner + tìm kiếm + lưới */
+
 .cot-sp { display: inline-block; vertical-align: top; width: calc(100% - 244px); font-size: 16px; }
 .banner-km { padding: 22px 28px; margin-bottom: 16px; color: #fff; background: linear-gradient(120deg, var(--xanh-dam), var(--xanh)); border-radius: 12px; border-left: 8px solid var(--vang); }
 .banner-km h2 { font-size: 26px; }
