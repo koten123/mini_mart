@@ -1,4 +1,3 @@
-// ===== header.js – Header: đã đăng nhập thì hiện tên tài khoản + nút Đăng xuất =====
 function dangXuatHeader() {
   try { localStorage.removeItem("hoiVienHienTai"); } catch (e) {}
   window.location.href = "index.html";
@@ -13,9 +12,9 @@ function dangXuatHeader() {
   var khu = document.getElementsByClassName("tk-gio")[0];
   if (!tk || !khu) { return; }
 
-  var a = khu.getElementsByTagName("a"); // [0] Đăng nhập, [1] Đăng ký, [2] Giỏ hàng
+  var a = khu.getElementsByTagName("a"); 
   a[0].href = "member.html";
-  a[0].innerText = "Xin chào, " + tk.ten; // innerText: tên người dùng nhập không chèn được HTML
+  a[0].innerText = "Xin chào, " + tk.ten; 
   a[1].href = "#";
   a[1].innerText = "Đăng xuất";
   a[1].onclick = function () { dangXuatHeader(); return false; };
