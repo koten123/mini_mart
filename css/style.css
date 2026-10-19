@@ -1,4 +1,4 @@
-/* ===== style.css – CSS dùng chung ===== */
+
 :root {
   --xanh: #1b86ad;
   --xanh-dam: #0e5f84;
@@ -25,7 +25,7 @@ img { max-width: 100%; }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
 section { padding: 28px 0; }
 
-/* ----- Header tầng 1: logo | tìm kiếm | tài khoản ----- */
+
 .header { background: #fff; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 10px rgba(14,95,132,.12); }
 .top-bar { font-size: 0; padding-top: 8px; padding-bottom: 8px; }
 .logo { display: inline-block; vertical-align: middle; width: 170px; }
@@ -43,7 +43,7 @@ section { padding: 28px 0; }
 
 .menu-btn { display: none; vertical-align: middle; width: 52px; height: 42px; margin-left: 12px; font-size: 22px; background: none; border: 1px solid var(--vien); border-radius: 8px; cursor: pointer; }
 
-/* ----- Header tầng 2: thanh menu xanh đậm ----- */
+
 .thanh-nav { background: var(--xanh-dam); }
 .nav { font-size: 0; }
 .nav a { display: inline-block; vertical-align: middle; margin: 8px 6px 8px 0; padding: 7px 18px; border-radius: 18px; font-size: 15px; font-weight: 600; color: #fff; }
@@ -51,7 +51,6 @@ section { padding: 28px 0; }
 .nav a.active { background: var(--vang); color: var(--chu); }
 .nav a.nav-dm { background: rgba(0,0,0,.22); margin-right: 14px; }
 
-/* ----- Nút ----- */
 .btn { display: inline-block; padding: 10px 20px; border: none; border-radius: 8px; background: var(--xanh-dam); color: #fff; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background .2s; text-align: center; }
 .btn:hover { background: var(--xanh); }
 .btn-vang { background: var(--vang); color: var(--chu); }
@@ -59,10 +58,10 @@ section { padding: 28px 0; }
 .btn-vien { background: #fff; color: var(--xanh-dam); border: 2px solid var(--xanh-dam); }
 .btn-vien:hover { background: var(--xanh-nhat); }
 
-/* ----- Tiêu đề khối ----- */
+
 .tieu-de { font-size: 24px; margin-bottom: 18px; color: var(--xanh-dam); border-left: 5px solid var(--vang); padding-left: 10px; }
 
-/* ----- Thẻ sản phẩm (lưới inline-block, JS bật thẻ bằng inline-block) ----- */
+
 .luoi-sp { font-size: 0; margin: 0 -9px; }
 .card { display: inline-block; vertical-align: top; width: calc(25% - 18px); margin: 0 9px 18px; font-size: 16px; background: #fff; border: 1px solid var(--vien); border-radius: 12px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
 .card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(14,95,132,.14); }
@@ -73,17 +72,16 @@ section { padding: 28px 0; }
 .card-gia { color: var(--do); font-weight: 800; font-size: 18px; margin-bottom: 10px; }
 .card .btn { display: block; width: 100%; }
 
-/* ----- Thông báo nổi ----- */
+
 .toast { display: none; position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--xanh-dam); color: #fff; padding: 12px 24px; border-radius: 8px; z-index: 100; box-shadow: 0 4px 14px rgba(0,0,0,.25); max-width: 90%; text-align: center; }
 
-/* ----- Form chung ----- */
 .nhom-form { margin-bottom: 14px; }
 .nhom-form label { display: block; font-weight: 600; margin-bottom: 4px; }
 .nhom-form input, .nhom-form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--vien); border-radius: 8px; font-size: 15px; font-family: inherit; }
 .nhom-form input:focus, .nhom-form textarea:focus { outline: 2px solid var(--xanh); border-color: var(--xanh); }
 .loi { display: block; color: var(--do); font-size: 13px; min-height: 18px; margin-top: 2px; }
 
-/* ----- Footer ----- */
+
 .footer { background: var(--xanh-dam); color: #d6ebf4; margin-top: 32px; }
 .footer-luoi { font-size: 0; padding-top: 32px; padding-bottom: 24px; }
 .footer-luoi > div { display: inline-block; vertical-align: top; width: 25%; padding-right: 24px; font-size: 15px; }
@@ -94,7 +92,7 @@ section { padding: 28px 0; }
 .logo-ft { display: block; height: 64px; width: auto; padding: 4px 10px; margin-bottom: 10px; background: #fff; border-radius: 10px; }
 .ban-quyen { border-top: 1px solid rgba(255,255,255,.2); text-align: center; padding: 14px; font-size: 14px; }
 
-/* ----- Responsive ----- */
+
 @media (max-width: 992px) {
   .card { width: calc(33.333% - 18px); }
 }
