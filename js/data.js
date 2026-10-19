@@ -346,11 +346,11 @@ const danhSachSanPham = [
 
   // --- ĐỒ UỐNG ---
   {
-    id: "nuoc-suoi",
-    ten: "Nước suối tinh khiết 500ml",
-    gia: "6.000đ",
-    giaSo: 6000,
-    anh: "images/products/nuoc.png",
+    id: "nuoc-ngot-lon",
+    ten: "Pepsi vị phúc bồn tử",
+    gia: "12.000đ",
+    giaSo: 12000,
+    anh: "images/products/nuoc-ngot-lon.png",
     danhMuc: "nuoc",
     moTa: "Nước uống tinh khiết giải khát nhanh chóng, đóng chai tiện lợi.",
     thuongHieu: "Aquafina",
