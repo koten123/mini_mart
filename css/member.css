@@ -1,4 +1,4 @@
-/* ===== member.css – TV5: Hội viên & Ưu đãi ===== */
+
 main.container { padding-top: 28px; padding-bottom: 12px; }
 main .tieu-de { margin-top: 28px; }
 
@@ -14,14 +14,13 @@ main .tieu-de { margin-top: 28px; }
 .bieu-tuong { font-size: 42px; }
 .the-quyen h3 { margin: 6px 0; }
 
-/* Thẻ ưu đãi */
 .the-uu-dai { background: #fff; border: 2px dashed var(--xanh); border-radius: 12px; padding: 20px; }
 .the-uu-dai h3 { font-size: 20px; margin: 10px 0 4px; }
 .the-uu-dai p { color: var(--chu-phu); margin-bottom: 12px; }
 .the-uu-dai.rieng { border-color: var(--vang-dam); background: #fffaf0; }
 .uu-dai-chung { padding-top: 0; }
 
-/* Badge */
+
 .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; }
 .badge-cam { background: var(--vang); color: var(--chu); }
 .badge-tv { background: var(--xanh-nhat); color: var(--xanh-dam); }
@@ -30,7 +29,7 @@ main .tieu-de { margin-top: 28px; }
 .badge-xanh { background: var(--xanh-nhat); color: var(--xanh-dam); }
 .badge-bac { background: #e6e8ec; color: #4a5260; font-size: 20px; padding: 6px 18px; }
 
-/* Khu hội viên */
+
 .chao-hoi-vien { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: #fff; border: 1px solid var(--vien); border-radius: 12px; padding: 20px 24px; margin-bottom: 18px; }
 .chao-hoi-vien h1 { font-size: 24px; }
 .chao-hoi-vien p { color: var(--chu-phu); }
@@ -40,13 +39,13 @@ main .tieu-de { margin-top: 28px; }
 .so-lon.nho { font-size: 28px; color: var(--xanh-dam); }
 .phu { color: var(--chu-phu); font-size: 14px; }
 
-/* Bảng lịch sử */
+
 .cuon-bang { overflow-x: auto; background: #fff; border: 1px solid var(--vien); border-radius: 12px; }
 .bang-ls { width: 100%; border-collapse: collapse; min-width: 480px; }
 .bang-ls th { background: var(--xanh-nhat); text-align: left; padding: 12px; }
 .bang-ls td { padding: 12px; border-top: 1px solid var(--vien); }
 
-/* Thông báo thành công và gợi ý */
+
 .thanh-cong { display: none; margin-top: 14px; padding: 12px; background: var(--xanh-nhat); border: 1px solid var(--xanh); border-radius: 8px; color: var(--xanh-dam); font-weight: 600; }
 .goi-y { margin-top: 14px; font-size: 13px; color: var(--chu-phu); }
 
@@ -56,7 +55,7 @@ main .tieu-de { margin-top: 28px; }
   .chao-hoi-vien h1 { font-size: 20px; }
 }
 
-/* ===== Trang đăng nhập / đăng ký: hộp form giữa trang, cùng tông xanh–vàng với các trang khác ===== */
+
 .hop-form { max-width: 440px; margin: 16px auto 0; padding: 28px; box-shadow: 0 4px 16px rgba(14,95,132,.1); }
 .hop-form h3 { font-size: 24px; color: var(--xanh-dam); border-left: 5px solid var(--vang); padding-left: 10px; margin-bottom: 20px; }
 .hop-form .btn { width: 100%; padding: 12px; font-size: 16px; }
