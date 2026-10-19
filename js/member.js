@@ -1,4 +1,4 @@
-// ===== member.js – TV5: Hội viên & Ưu đãi =====
+
 
 // Bấm nút ☰ để mở/đóng menu trên điện thoại
 function doiMenu() {
@@ -15,7 +15,7 @@ function sdtHopLe(sdt) {
   return /^0\d{9}$/.test(sdt);
 }
 
-// ----- Đăng ký -----
+// Đăng ký
 function dangKy() {
   var ten = document.getElementById("dkTen").value.trim();
   var sdt = document.getElementById("dkSdt").value.trim();
@@ -57,7 +57,7 @@ function dangKy() {
   }
 }
 
-// ----- Đăng nhập -----
+//Đăng nhập
 function dangNhap() {
   var sdt = document.getElementById("dnSdt").value.trim();
   var matKhau = document.getElementById("dnMatKhau").value;
@@ -89,14 +89,11 @@ function dangNhap() {
   }
 }
 
-// ----- Đăng xuất: quên tài khoản hiện tại, quay lại khu khách -----
 function dangXuat() {
   try { localStorage.removeItem("hoiVienHienTai"); } catch (e) {}
-  window.location.reload(); // tải lại để header cũng quay về Đăng nhập / Đăng ký
+  window.location.reload();
 }
 
-// ----- Dữ liệu hội viên (lưu trong trình duyệt) -----
-// hoiVien = { "số điện thoại": { ten, tu: "MM/YYYY", donHang: [ { ma, ngay, soMon, tong, diem } ] } }
 function docKho() {
   try {
     return JSON.parse(localStorage.getItem("hoiVien")) || {};
@@ -136,7 +133,7 @@ function hienHoiVien() {
 
   var diem = 0;
   var html = "";
-  for (var i = tk.donHang.length - 1; i >= 0; i--) { // đơn mới nhất lên đầu
+  for (var i = tk.donHang.length - 1; i >= 0; i--) {
     var d = tk.donHang[i];
     diem = diem + d.diem;
     html += "<tr><td>" + d.ma + "</td><td>" + d.ngay + "</td><td>" + d.soMon + "</td><td>" + dinhDang(d.tong) + "đ</td><td>+" + d.diem + "</td></tr>";
