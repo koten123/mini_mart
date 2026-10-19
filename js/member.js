@@ -10,21 +10,20 @@ function doiMenu() {
   }
 }
 
-// Email hợp lệ (bản đơn giản): có chữ @ và có dấu chấm sau @
-function emailHopLe(email) {
-  var viTri = email.indexOf("@");
-  return viTri > 0 && email.indexOf(".", viTri) > viTri + 1 && email.charAt(email.length - 1) !== ".";
+// Số điện thoại hợp lệ: 10 chữ số, bắt đầu bằng 0
+function sdtHopLe(sdt) {
+  return /^0\d{9}$/.test(sdt);
 }
 
 // ----- Đăng ký -----
 function dangKy() {
   var ten = document.getElementById("dkTen").value.trim();
-  var email = document.getElementById("dkEmail").value.trim();
+  var sdt = document.getElementById("dkSdt").value.trim();
   var matKhau = document.getElementById("dkMatKhau").value;
   var hopLe = true;
 
   document.getElementById("loiDkTen").innerText = "";
-  document.getElementById("loiDkEmail").innerText = "";
+  document.getElementById("loiDkSdt").innerText = "";
   document.getElementById("loiDkMatKhau").innerText = "";
   document.getElementById("dkThanhCong").style.display = "none";
 
@@ -32,11 +31,11 @@ function dangKy() {
     document.getElementById("loiDkTen").innerText = "Vui lòng nhập họ tên";
     hopLe = false;
   }
-  if (email === "") {
-    document.getElementById("loiDkEmail").innerText = "Vui lòng nhập email";
+  if (sdt === "") {
+    document.getElementById("loiDkSdt").innerText = "Vui lòng nhập số điện thoại";
     hopLe = false;
-  } else if (!emailHopLe(email)) {
-    document.getElementById("loiDkEmail").innerText = "Email không hợp lệ (thiếu @ hoặc tên miền)";
+  } else if (!sdtHopLe(sdt)) {
+    document.getElementById("loiDkSdt").innerText = "SĐT phải gồm 10 chữ số và bắt đầu bằng 0";
     hopLe = false;
   }
   if (matKhau === "") {
@@ -50,9 +49,8 @@ function dangKy() {
   if (hopLe) {
     var tb = document.getElementById("dkThanhCong");
     var kho = docKho();
-    var khoa = email.toLowerCase();
-    taoTaiKhoan(kho, khoa, ten);
-    kho[khoa].ten = ten;
+    taoTaiKhoan(kho, sdt, ten);
+    kho[sdt].ten = ten;
     luuKho(kho);
     tb.innerText = "✔ Đăng ký thành công! Chào mừng " + ten + ", hãy đăng nhập để vào khu hội viên.";
     tb.style.display = "block";
@@ -61,18 +59,18 @@ function dangKy() {
 
 // ----- Đăng nhập -----
 function dangNhap() {
-  var email = document.getElementById("dnEmail").value.trim();
+  var sdt = document.getElementById("dnSdt").value.trim();
   var matKhau = document.getElementById("dnMatKhau").value;
   var hopLe = true;
 
-  document.getElementById("loiDnEmail").innerText = "";
+  document.getElementById("loiDnSdt").innerText = "";
   document.getElementById("loiDnMatKhau").innerText = "";
 
-  if (email === "") {
-    document.getElementById("loiDnEmail").innerText = "Vui lòng nhập email";
+  if (sdt === "") {
+    document.getElementById("loiDnSdt").innerText = "Vui lòng nhập số điện thoại";
     hopLe = false;
-  } else if (!emailHopLe(email)) {
-    document.getElementById("loiDnEmail").innerText = "Email không hợp lệ (thiếu @ hoặc tên miền)";
+  } else if (!sdtHopLe(sdt)) {
+    document.getElementById("loiDnSdt").innerText = "SĐT phải gồm 10 chữ số và bắt đầu bằng 0";
     hopLe = false;
   }
   if (matKhau === "") {
@@ -83,11 +81,10 @@ function dangNhap() {
   // Hợp lệ -> nhớ tài khoản đang đăng nhập rồi sang trang hội viên
   // shortcut: không kiểm tra mật khẩu (bản mô phỏng lưu localStorage), nâng cấp khi có backend.
   if (hopLe) {
-    var khoa = email.toLowerCase();
     var kho = docKho();
-    taoTaiKhoan(kho, khoa, khoa.split("@")[0]);
+    taoTaiKhoan(kho, sdt, sdt);
     luuKho(kho);
-    try { localStorage.setItem("hoiVienHienTai", khoa); } catch (e) {}
+    try { localStorage.setItem("hoiVienHienTai", sdt); } catch (e) {}
     window.location.href = "member.html";
   }
 }
@@ -95,12 +92,11 @@ function dangNhap() {
 // ----- Đăng xuất: quên tài khoản hiện tại, quay lại khu khách -----
 function dangXuat() {
   try { localStorage.removeItem("hoiVienHienTai"); } catch (e) {}
-  hienHoiVien();
-  window.scrollTo(0, 0);
+  window.location.reload(); // tải lại để header cũng quay về Đăng nhập / Đăng ký
 }
 
 // ----- Dữ liệu hội viên (lưu trong trình duyệt) -----
-// hoiVien = { "email": { ten, tu: "MM/YYYY", donHang: [ { ma, ngay, soMon, tong, diem } ] } }
+// hoiVien = { "số điện thoại": { ten, tu: "MM/YYYY", donHang: [ { ma, ngay, soMon, tong, diem } ] } }
 function docKho() {
   try {
     return JSON.parse(localStorage.getItem("hoiVien")) || {};
@@ -114,10 +110,10 @@ function luuKho(kho) {
   } catch (e) {}
 }
 // Tài khoản mới có lịch sử trống; đã có thì giữ nguyên lịch sử
-function taoTaiKhoan(kho, email, ten) {
-  if (!kho[email]) {
+function taoTaiKhoan(kho, sdt, ten) {
+  if (!kho[sdt]) {
     var d = new Date();
-    kho[email] = { ten: ten, tu: ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear(), donHang: [] };
+    kho[sdt] = { ten: ten, tu: ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear(), donHang: [] };
   }
 }
 
@@ -130,9 +126,9 @@ function hienHoiVien() {
   var khuHV = document.getElementById("khuHoiVien");
   if (!khuHV) { return; } // trang đăng nhập / đăng ký không có khu này
 
-  var email = null;
-  try { email = localStorage.getItem("hoiVienHienTai"); } catch (e) {}
-  var tk = email ? docKho()[email] : null;
+  var sdt = null;
+  try { sdt = localStorage.getItem("hoiVienHienTai"); } catch (e) {}
+  var tk = sdt ? docKho()[sdt] : null;
 
   document.getElementById("khuKhach").style.display = tk ? "none" : "block";
   khuHV.style.display = tk ? "block" : "none";
@@ -158,7 +154,6 @@ function hienHoiVien() {
   }
 
   document.getElementById("tenHV").innerText = tk.ten;
-  document.getElementById("emailHV").innerText = email;
   document.getElementById("diemHV").innerText = dinhDang(diem);
   document.getElementById("hangHV").innerText = hang;
   document.getElementById("hangHV").className = "badge " + lop;

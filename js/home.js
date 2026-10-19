@@ -8,3 +8,10 @@ function doiMenu() {
     menu.className = "nav";
   }
 }
+
+// Link "Xem chi tiết" ở sản phẩm nổi bật gửi tên sản phẩm sang trang chi tiết (không cần sửa index.html)
+var cacThe = document.querySelectorAll(".luoi-sp .card");
+for (var i = 0; i < cacThe.length; i++) {
+  var ten = cacThe[i].getElementsByClassName("card-ten")[0].textContent.trim();
+  cacThe[i].getElementsByTagName("a")[0].href = "product-detail.html?ten=" + encodeURIComponent(ten);
+}

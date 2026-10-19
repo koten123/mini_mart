@@ -96,3 +96,10 @@ if (tuKhoaURL) {
   document.getElementById("timkiem").value = tuKhoaURL;
   capNhat();
 }
+
+// Link "Xem chi tiết" gửi tên sản phẩm sang trang chi tiết (không cần sửa products.html)
+var cacThe2 = document.getElementsByClassName("the");
+for (var k = 0; k < cacThe2.length; k++) {
+  var ten2 = cacThe2[k].getElementsByClassName("card-ten")[0].textContent.trim();
+  cacThe2[k].getElementsByTagName("a")[0].href = "product-detail.html?ten=" + encodeURIComponent(ten2);
+}

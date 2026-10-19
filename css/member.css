@@ -18,12 +18,15 @@ main .tieu-de { margin-top: 28px; }
 .the-uu-dai { background: #fff; border: 2px dashed var(--xanh); border-radius: 12px; padding: 20px; }
 .the-uu-dai h3 { font-size: 20px; margin: 10px 0 4px; }
 .the-uu-dai p { color: var(--chu-phu); margin-bottom: 12px; }
-.the-uu-dai.rieng { border-color: var(--cam); background: #fff9f2; }
+.the-uu-dai.rieng { border-color: var(--vang-dam); background: #fffaf0; }
 .uu-dai-chung { padding-top: 0; }
 
 /* Badge */
 .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; }
-.badge-cam { background: var(--cam); color: #fff; }
+.badge-cam { background: var(--vang); color: var(--chu); }
+.badge-tv { background: var(--xanh-nhat); color: var(--xanh-dam); }
+.badge-vang { background: var(--vang); color: var(--chu); }
+.badge-tv, .badge-vang { font-size: 20px; padding: 6px 18px; }
 .badge-xanh { background: var(--xanh-nhat); color: var(--xanh-dam); }
 .badge-bac { background: #e6e8ec; color: #4a5260; font-size: 20px; padding: 6px 18px; }
 
@@ -33,7 +36,7 @@ main .tieu-de { margin-top: 28px; }
 .chao-hoi-vien p { color: var(--chu-phu); }
 .o-so { background: #fff; border: 1px solid var(--vien); border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .nhan-o { color: var(--chu-phu); font-weight: 600; }
-.so-lon { font-size: 40px; font-weight: 800; color: var(--cam-dam); line-height: 1.1; }
+.so-lon { font-size: 40px; font-weight: 800; color: var(--xanh-dam); line-height: 1.1; }
 .so-lon.nho { font-size: 28px; color: var(--xanh-dam); }
 .phu { color: var(--chu-phu); font-size: 14px; }
 
@@ -52,3 +55,10 @@ main .tieu-de { margin-top: 28px; }
   .gioi-thieu h1 { font-size: 24px; }
   .chao-hoi-vien h1 { font-size: 20px; }
 }
+
+/* ===== Trang đăng nhập / đăng ký: hộp form giữa trang, cùng tông xanh–vàng với các trang khác ===== */
+.hop-form { max-width: 440px; margin: 16px auto 0; padding: 28px; box-shadow: 0 4px 16px rgba(14,95,132,.1); }
+.hop-form h3 { font-size: 24px; color: var(--xanh-dam); border-left: 5px solid var(--vang); padding-left: 10px; margin-bottom: 20px; }
+.hop-form .btn { width: 100%; padding: 12px; font-size: 16px; }
+.hop-form .goi-y a { color: var(--xanh-dam); font-weight: 600; }
+.hop-form .goi-y a:hover { text-decoration: underline; }

@@ -7,10 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // 1. Lấy parameter id từ URL (ví dụ: product-detail.html?id=ca-chua)
   const urlParams = new URLSearchParams(window.location.search);
   const idSP = urlParams.get("id");
+  const tenSP = urlParams.get("ten"); // trang Sản phẩm gửi tên sản phẩm sang đây
 
   // Tìm sản phẩm trong danhSachSanPham (đã được nạp từ data.js)
-  if (typeof danhSachSanPham !== "undefined" && idSP) {
-    sanPhamHienTai = danhSachSanPham.find(sp => sp.id === idSP);
+  if (typeof danhSachSanPham !== "undefined") {
+    sanPhamHienTai = danhSachSanPham.find(sp => sp.id === idSP || sp.ten === tenSP);
   }
 
   // Nếu không tìm thấy, mặc định lấy sản phẩm đầu tiên (Sữa tươi)
@@ -73,35 +74,24 @@ function doiSL(delta) {
   if (slEl) slEl.innerText = soLuongHienTai;
 }
 
-// Hàm thêm vào giỏ hàng từ trang chi tiết
+// Hàm thêm vào giỏ hàng từ trang chi tiết (đọc từ chính trang, cùng dạng giỏ với products.js / cart.js)
 function themGio() {
-  if (!sanPhamHienTai) return;
+  const ten = document.querySelector(".cot-tin h1").innerText.trim();
+  const gia = Number(document.querySelector(".cot-tin .gia").innerText.replace(/\D/g, "")); // "32.000đ" -> 32000
+  const hinh = document.getElementById("anhLon").getAttribute("src");
 
-  let gioHang = JSON.parse(localStorage.getItem("gioHang")) || [];
-  let item = gioHang.find(i => i.id === sanPhamHienTai.id);
-
+  let gio = [];
+  try { gio = JSON.parse(localStorage.getItem("gioHang")) || []; } catch (e) {}
+  const item = gio.find(i => i.ten === ten);
   if (item) {
-    item.soLuong += soLuongHienTai;
+    item.sl = Math.min(item.sl + soLuongHienTai, 10);
   } else {
-    gioHang.push({
-      id: sanPhamHienTai.id,
-      ten: sanPhamHienTai.ten,
-      gia: sanPhamHienTai.giaSo,
-      giaText: sanPhamHienTai.gia,
-      anh: sanPhamHienTai.anh,
-      soLuong: soLuongHienTai
-    });
+    gio.push({ ten: ten, gia: gia, hinh: hinh, sl: soLuongHienTai });
   }
+  try { localStorage.setItem("gioHang", JSON.stringify(gio)); } catch (e) {}
 
-  localStorage.setItem("gioHang", JSON.stringify(gioHang));
-
-  // Hiện toast thông báo
-  const thongBao = document.getElementById("thongbao");
-  if (thongBao) {
-    thongBao.innerText = `Đã thêm ${soLuongHienTai} x "${sanPhamHienTai.ten}" vào giỏ hàng!`;
-    thongBao.classList.add("hien");
-    setTimeout(() => {
-      thongBao.classList.remove("hien");
-    }, 2500);
-  }
+  const tb = document.getElementById("thongbao");
+  tb.innerText = `✔ Đã thêm ${soLuongHienTai} x "${ten}" vào giỏ hàng`;
+  tb.style.display = "block";
+  setTimeout(() => { tb.style.display = "none"; }, 2500);
 }
